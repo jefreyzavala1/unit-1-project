@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Indie Flower',cursive;
+}
+
+h1{
+    color: #ffcb05;
+}
+h1,h2{
+text-align: center;
+}
+
+.container{
+    /* border: 1px solid red; */
+    height: 25vh;
+    display: flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    width: 40vh;
+    margin: 0 auto;
+    border-radius: 1%;
+    
+}
+
+.container > div{
+    margin-top: 2%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
