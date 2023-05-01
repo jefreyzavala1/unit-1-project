@@ -5,6 +5,7 @@
 body{
     margin: 0;
     font-family: 'Indie Flower',cursive;
+    background-image: url("asset/pokemon-battle.png");
 }
 
 h1{
@@ -23,6 +24,7 @@ text-align: center;
     width: 30vh;
     margin: 0 auto;
     border-radius: 1%;
+    background-color: white;
     
     
 }

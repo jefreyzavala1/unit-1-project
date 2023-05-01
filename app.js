@@ -43,9 +43,14 @@ function init(){
  modal.classList.add('modal');
  
  modal.innerHTML =`<h2>Welcome Fighters!!</h2> <h3>Player 1 chose ${player1}</h3> <h3>Player 2 chose ${player2} </br>
- <button style="">Fight!!</button>`;
+ <button id="fight" style="">Fight!!</button>`;
 
- document.body.appendChild(modal)
+ document.body.appendChild(modal);
+ //console.log(players)
+ const btnEl = document.getElementById('fight');
+ btnEl.addEventListener('click',(evt)=>{
+   //call game
+ })
  }
 
 
@@ -62,7 +67,7 @@ const pokemonArray = [];
 for(let pokemon of pokemonsDivs){
 pokemonArray.push(pokemon.id)
 }
-//console.log(pokemonArray)
+console.log(pokemonArray)
 
 
 
@@ -77,12 +82,34 @@ const turn = 0;
 let winner = null
 
 class Pokemon{
-    constructor(name,health,abilities){
+    constructor(name,abilities){
         this.name = name;
-        this.health = health;
+        this.health = 100;
         this.abilities = abilities;
     }
 }
+
+Math.floor(Math.random()*10) + 1;
+function randomPower(){
+    return Math.floor(Math.random()*10) + 1;
+}
+const abilities = [{'iron-tail':randomPower()},{'thunderbolt':randomPower()},{'static-surge':randomPower()}]
+const pikachu = new Pokemon("pikachu",abilities);
+
+const charizard = new Pokemon("charizard",[{'flamethrower':randomPower()},{'dragon-claw':randomPower()},{'wing-attack':randomPower()}]);
+
+const blastoise = new Pokemon("blastoise",[{"hydro-pump":randomPower(),"ice-beam":randomPower()},{"skull-bash":randomPower()}]);
+
+//not using snorlax const snorlax = new Pokemon('snorlax',[{"thick-"}])
+const machamp = new Pokemon("machamp",{"cross-chop":randomPower(),"dynamic-punch":randomPower()},{"stone-edge":randomPower()});
+
+const alakazam =  new Pokemon("alakazam",{"psychic":randomPower(),"future-sight":randomPower(),"shadow-ball":randomPower()});
+
+const squirtle  = new Pokemon("squirtle",{"water-gun":randomPower(),"bubble-beam":randomPower()},{"aqua-tail":randomPower()})
+
+const gyarados = new Pokemon("gyarados",{'hydro-pump':randomPower()},{'crunch':randomPower()},{'dragon-pulse':randomPower()});
+
+const lucario = new Pokemon("lucario",{"aura-sphere":randomPower(),'close-combat':randomPower(),'flash-cannon':randomPower()});
 
 
 //Set pokemon1,pokemon2 properties:
