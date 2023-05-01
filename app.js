@@ -9,6 +9,9 @@ playerChoose.innerText = playingText;
 
 const div =  document.querySelector('.container');
 div.addEventListener('click',(evt)=>{
+    if(!evt.target.alt){
+        return
+    }
 if(players[0]){
     players[1] = evt.target.alt
 }else{
@@ -17,8 +20,10 @@ if(players[0]){
 players.length++;
 const child = evt.target;
 const parent = child.parentNode;
-parent.remove();
-playerChoose.innerText = "Player 2"
+// parent.remove();
+playerChoose.innerText = "Player 2";
+parent.classList.add('unclickable')
+//child.classList.add('unclickable')
 if(players.length==2){
     console.log("Two players ready")
     div.removeEventListener('click',this)
@@ -34,6 +39,13 @@ function init(){
  const player2 = players[1];
 
  //create modal
+ const modal = document.createElement('div');
+ modal.classList.add('modal');
+ 
+ modal.innerHTML =`<h2>Welcome Fighters!!</h2> <h3>Player 1 chose ${player1}</h3> <h3>Player 2 chose ${player2} </br>
+ <button style="">Fight!!</button>`;
+
+ document.body.appendChild(modal)
  }
 
 

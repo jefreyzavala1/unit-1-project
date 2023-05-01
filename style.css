@@ -24,8 +24,11 @@ text-align: center;
     margin: 0 auto;
     border-radius: 1%;
     
+    
 }
-
+.unclickable{
+pointer-events: none;
+}
 .container > div{
     margin-top: 2%;
     border: 1px solid black;
@@ -35,3 +38,25 @@ text-align: center;
     border-radius: 5%;
 }
 
+/* code used from arthur's tomagatchi to create modal*/
+.modal {
+    width: 50vw;
+    max-width: 400px;
+    padding: 30px;
+    position: fixed;
+    top: 45%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: rgba(240, 240, 240);
+    border-radius: 4px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .container div img:hover{
+    cursor: pointer;
+  }
