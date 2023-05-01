@@ -3,9 +3,9 @@ const players ={
 length:0
 }
 
-const playing= [];
+const playingText = "Player1"
 const playerChoose = document.querySelector('#player');
-playerChoose.innerText = players[0];
+playerChoose.innerText = playingText;
 
 const div =  document.querySelector('.container');
 div.addEventListener('click',(evt)=>{
@@ -15,12 +15,26 @@ if(players[0]){
     players[0]= evt.target.alt
 }
 players.length++;
+const child = evt.target;
+const parent = child.parentNode;
+parent.remove();
+playerChoose.innerText = "Player 2"
 if(players.length==2){
     console.log("Two players ready")
     div.removeEventListener('click',this)
+     init();
+    //CALL GAME CLASS 
+
 }
 //console.log(players);
 })
+
+function init(){
+ const player1 = players[0];
+ const player2 = players[1];
+
+ //create modal
+ }
 
 
 
@@ -43,9 +57,21 @@ pokemonArray.push(pokemon.id)
 //declare pokemon1 as an object
 const pokemon1 = {};
 //declare pokemon2 as an object
+const pokemon2 = {};
 //declare a turn toggle option
+const turn = 0;
 //declare turn as a global variable and set it to 0
 //declare winner - this will be 0 or 1
+let winner = null
+
+class Pokemon{
+    constructor(name,health,abilities){
+        this.name = name;
+        this.health = health;
+        this.abilities = abilities;
+    }
+}
+
 
 //Set pokemon1,pokemon2 properties:
 // Set name property to a string
