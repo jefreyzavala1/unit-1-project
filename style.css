@@ -72,3 +72,44 @@ background-color: #ffcb05;
   .mainscreen{
     display: none
   }
+
+  .healthStatus{
+    display: flex;
+    justify-content:space-around;
+  }
+
+  .healthStatus > h2 {
+    border: 1px solid black;
+    width: 40%;
+    /* background: linear-gradient(to right, red 0%,pink 70%,white 80%); */
+    background: red;
+  }
+
+  .poke1 img{
+   height: 20vh;
+  }
+
+  .poke2 img{
+    height: 20vh;
+  }
+  #battleContainer{
+    position: relative;
+    border: solid black 1px;
+    height: 80vh;
+  }
+
+
+  .poke1,.poke2{
+  border: solid red 1px;
+   position: absolute;
+  }
+
+  .poke1{
+    top: 55vh;
+    left: 20vh;
+  }
+
+  .poke2{
+    right: 20vh;
+    top:30vh;
+  }

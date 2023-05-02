@@ -85,7 +85,8 @@ document.body.style.backgroundImage = 'none'
   //console.log(poke1,poke2)
 
 const game = new Game(poke1,poke2);
-console.log(game)
+//start game
+game.start();
  })
  }
 
@@ -124,6 +125,7 @@ class Pokemon{
         this.health = 100;
         this.abilities = abilities;
     }
+    
 }
 
 Math.floor(Math.random()*10) + 1;
@@ -149,10 +151,43 @@ const gyarados = new Pokemon("gyarados",{'hydro-pump':randomPower()},{'crunch':r
 const lucario = new Pokemon("lucario",{"aura-sphere":randomPower(),'close-combat':randomPower(),'flash-cannon':randomPower()});
 
 const pokemonObjectArray = [pikachu,charizard,blastoise,machamp,alakazam,squirtle];
+
+
 class Game{
     constructor(player1,player2){
         this.player1 = player1;
         this.player2 = player2;
+    }
+    start(){
+        //set the battle field
+        const containerEl = document.createElement('div')
+        const player1Health = document.createElement('h2');
+        player1Health.innerText = this.player1.name;
+        const player2Health = document.createElement('h2');
+        player2Health.innerText = this.player2.name
+        containerEl.appendChild(player1Health);
+        containerEl.appendChild(player2Health);
+        containerEl.classList.add('healthStatus')
+        document.querySelector('#battleContainer').appendChild(containerEl);
+        this.setPokemonsPosition();
+        
+    }
+
+    setPokemonsPosition(){
+        const poke1Pos = document.createElement('div');
+        const poke2Pos = document.createElement('div');
+        const poke1Img = document.createElement('img');
+        poke1Img.src = 'asset/pikachu.png';
+        poke1Pos.appendChild(poke1Img);
+
+        poke1Pos.setAttribute('class','poke1');
+        poke2Pos.setAttribute('class','poke2')
+        
+        const poke2Img = document.createElement('img');
+        poke2Img.src = 'asset/squirtle.png';
+        poke2Pos.appendChild(poke2Img);
+        document.querySelector('#battleContainer').appendChild(poke1Pos);
+        document.querySelector('#battleContainer').appendChild(poke2Pos)
     }
 
 }
