@@ -1,115 +1,120 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    margin: 0;
-    font-family: 'Indie Flower',cursive;
-    background-image: url("asset/pokemon-battle.png");
+body {
+  margin: 0;
+  font-family: "Indie Flower", cursive;
+  background-image: url("asset/pokemon-battle.png");
 }
 
-h1{
-    color: #ffcb05;
+h1 {
+  color: #ffcb05;
+  font-size: 3rem;
+  text-decoration: underline;
+  text-shadow: 3px 2px 5px red;
 }
-h1,h2{
-text-align: center;
+h1,
+h2 {
+  text-align: center;
 }
-
-.container{
-    /* border: 1px solid red; */
-    height: 25vh;
-    display: flex;
-    justify-content:space-around;
-    flex-wrap: wrap;
-    width: 30vh;
-    margin: 0 auto;
-    border-radius: 1%;
-    background-color: white;
-    
-    
+h2,
+span {
+  font-size: 2rem;
 }
-.unclickable{
-pointer-events: none;
+.container {
+  /* border: 1px solid red; */
+  height: 35vh;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 40vh;
+  margin: 0 auto;
+  border-radius: 1%;
+  background-color: white;
 }
-.container > div{
-    margin-top: 2%;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5%;
+.unclickable {
+  pointer-events: none;
+}
+.container > div {
+  margin-top: 2%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
 }
 
 /* code used from arthur's tomagatchi to create modal*/
 .modal {
-    width: 50vw;
-    max-width: 400px;
-    padding: 30px;
-    position: fixed;
-    top: 45%;
-    transform: translateY(-20%);
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    background-color: rgb(179, 95, 95);
-    border-radius: 4px;
-    box-shadow: 3px 3px 3px rgba(112, 96, 96, 0.2);
-    text-align: center;
-    opacity: 1;
-    visibility: visible;
-    color: goldenrod;
-  }
+  width: 50vw;
+  max-width: 400px;
+  padding: 30px;
+  position: fixed;
+  top: 45%;
+  transform: translateY(-20%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: rgb(179, 95, 95);
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px rgba(112, 96, 96, 0.2);
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  color: goldenrod;
+}
 
-  .container div img:hover{
-    cursor: pointer;
-  }
+.container div img:hover {
+  cursor: pointer;
+}
 
-  button:hover{
-cursor: pointer;
-background-color: #ffcb05;
-  }
+button:hover {
+  cursor: pointer;
+  background-color: #ffcb05;
+}
 
-  .mainscreen{
-    display: none
-  }
+.mainscreen {
+  display: none;
+}
 
-  .healthStatus{
-    display: flex;
-    justify-content:space-around;
-  }
+.healthStatus {
+  display: flex;
+  justify-content: space-around;
+}
 
-  .healthStatus > h2 {
-    border: 1px solid black;
-    width: 40%;
-    /* background: linear-gradient(to right, red 0%,pink 70%,white 80%); */
-    background: red;
-  }
+.healthStatus > h2 {
+  border: 1px solid black;
+  width: 40%;
+  /* background: linear-gradient(to right, red 0%,pink 70%,white 80%); */
+  background: red;
+}
 
-  .poke1 img{
-   height: 20vh;
-  }
+.poke1 img {
+  height: 20vh;
+}
 
-  .poke2 img{
-    height: 20vh;
-  }
-  #battleContainer{
-    position: relative;
-    border: solid black 1px;
-    height: 80vh;
-  }
+.poke2 img {
+  height: 20vh;
+}
+#battleContainer {
+  position: relative;
+  border: solid black 1px;
+  height: 80vh;
+}
 
-
-  .poke1,.poke2{
+.poke1,
+.poke2 {
   border: solid red 1px;
-   position: absolute;
-  }
+  position: absolute;
+}
 
-  .poke1{
-    top: 55vh;
-    left: 20vh;
-  }
+.poke1 {
+  top: 55vh;
+  left: 20vh;
+}
 
-  .poke2{
-    right: 20vh;
-    top:30vh;
-  }
+.poke2 {
+  right: 20vh;
+  top: 30vh;
+}
