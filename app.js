@@ -35,8 +35,8 @@ if(players.length==2){
 })
 
 function init(){
- const player1 = players[0];
- const player2 = players[1];
+ const player1 = {'player1':players[0]};
+ const player2 = {'player2':players[1]};
 
  //create modal
  const modal = document.createElement('div');
@@ -48,8 +48,44 @@ function init(){
  document.body.appendChild(modal);
  //console.log(players)
  const btnEl = document.getElementById('fight');
+
+ const battleEl = document.createElement('div');
  btnEl.addEventListener('click',(evt)=>{
    //call game
+   console.log("Let begin game")
+   //toggle mainscreen class
+   const h2El = document.querySelector('h2');
+   const containerEl = document.querySelector('.container');
+   h2El.classList.add('mainscreen');
+   containerEl.classList.add('mainscreen')
+   modal.remove();
+
+//    const battlebackgrounds = ["asset/back.jpeg"];
+//    document.body.style.backgroundImage = `url(${battlebackgrounds[0]})`
+//   document.body.style.backgroundRepeat = 'no-repeat';
+document.body.style.backgroundImage = 'none'
+  
+  battleEl.innerText = 'Lets fight';
+
+  document.body.appendChild(battleEl);
+  battleEl.setAttribute('id','battleContainer');
+
+  //find players choices in pokemons  and send pokemons to game
+  let poke1 = {};
+  let poke2 = {}
+  for(let pokemon of pokemonObjectArray){
+    if(pokemon.name===player1.player1){
+        poke1 = pokemon
+    }
+    if(pokemon.name===player2.player2){
+        poke2 = pokemon
+    }
+  }
+
+  //console.log(poke1,poke2)
+
+const game = new Game(poke1,poke2);
+console.log(game)
  })
  }
 
@@ -81,6 +117,7 @@ const turn = 0;
 //declare winner - this will be 0 or 1
 let winner = null
 
+
 class Pokemon{
     constructor(name,abilities){
         this.name = name;
@@ -111,7 +148,14 @@ const gyarados = new Pokemon("gyarados",{'hydro-pump':randomPower()},{'crunch':r
 
 const lucario = new Pokemon("lucario",{"aura-sphere":randomPower(),'close-combat':randomPower(),'flash-cannon':randomPower()});
 
+const pokemonObjectArray = [pikachu,charizard,blastoise,machamp,alakazam,squirtle];
+class Game{
+    constructor(player1,player2){
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 
+}
 //Set pokemon1,pokemon2 properties:
 // Set name property to a string
 // Set turn property to 0

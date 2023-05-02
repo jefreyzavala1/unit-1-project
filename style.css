@@ -47,18 +47,28 @@ pointer-events: none;
     padding: 30px;
     position: fixed;
     top: 45%;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
     left: 0;
     right: 0;
     margin: 0 auto;
-    background-color: rgba(240, 240, 240);
+    background-color: rgb(179, 95, 95);
     border-radius: 4px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px rgba(112, 96, 96, 0.2);
     text-align: center;
     opacity: 1;
     visibility: visible;
+    color: goldenrod;
   }
 
   .container div img:hover{
     cursor: pointer;
+  }
+
+  button:hover{
+cursor: pointer;
+background-color: #ffcb05;
+  }
+
+  .mainscreen{
+    display: none
   }
