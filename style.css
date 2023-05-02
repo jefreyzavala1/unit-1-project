@@ -22,6 +22,9 @@ h2,
 span {
   font-size: 2rem;
 }
+h3 {
+  font-size: 1.5rem;
+}
 .container {
   /* border: 1px solid red; */
   height: 35vh;
@@ -43,8 +46,11 @@ span {
   justify-content: center;
   align-items: center;
   border-radius: 5%;
+  background-color: rgb(223, 159, 159);
 }
-
+span {
+  background-color: rgb(223, 159, 159);
+}
 /* code used from arthur's tomagatchi to create modal*/
 .modal {
   width: 50vw;
@@ -69,6 +75,11 @@ span {
   cursor: pointer;
 }
 
+button {
+  padding: 10px;
+  font-family: "Indie Flower", cursive;
+  font-size: 2rem;
+}
 button:hover {
   cursor: pointer;
   background-color: #ffcb05;
@@ -117,4 +128,7 @@ button:hover {
 .poke2 {
   right: 20vh;
   top: 30vh;
+}
+.notattacking {
+  display: none;
 }
