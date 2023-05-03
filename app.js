@@ -229,10 +229,18 @@ class Game {
     player1Health.innerText = this.player1.name;
     const player2Health = document.createElement("h2");
     player2Health.innerText = this.player2.name;
+
+    // player1Health.classList.add("health-bar");
+    // player1Health.style.setProperty("--percentage", 100);
+
+    // player2Health.classList.add("health-bar");
+    // player2Health.style.setProperty("--percentage", 100);
+    this.setHealthColor(player1Health, player2Health);
     containerEl.appendChild(player1Health);
     containerEl.appendChild(player2Health);
     containerEl.classList.add("healthStatus");
     document.querySelector("#battleContainer").appendChild(containerEl);
+
     this.setPokemonsPosition();
 
     //can track players object to see whose turn it is
@@ -241,7 +249,19 @@ class Game {
     console.log(`First player to start is ${players[turn]}`);
     this.beginAttack();
   }
+  setHealthColor(player1Health, player2Health) {
+    player1Health.classList.add("health-bar");
+    player1Health.style.setProperty(
+      "--percentage",
+      this.player1.health.toString()
+    );
 
+    player2Health.classList.add("health-bar");
+    player2Health.style.setProperty(
+      "--percentage",
+      this.player2.health.toString()
+    );
+  }
   beginAttack() {
     //go to poke1 class or poke2 create a div container that holds 3 attack buttons
     // console.log(this.player1);
@@ -321,6 +341,13 @@ class Game {
       console.log(abilityobj);
 
       this.player2.health -= abilityobj.power;
+      const player2Health = document.querySelector(".health-bar");
+
+      player2Health.nextElementSibling.style.setProperty(
+        "--percentage",
+        this.player2.health.toString()
+      );
+
       console.log(`Health of ${this.player2.name} is ${this.player2.health}`);
       if (this.player2.health < 0) {
         console.log(`Player ${players[turn]} have won`);
@@ -352,6 +379,13 @@ class Game {
       console.log(abilityobj);
 
       this.player1.health -= abilityobj.power;
+
+      const player1Health = document.querySelector(".health-bar");
+
+      player1Health.style.setProperty(
+        "--percentage",
+        this.player1.health.toString()
+      );
       //console.log(this.player2.health);
       console.log(`Health of ${this.player1.name} is ${this.player1.health}`);
       if (this.player1.health < 0) {
