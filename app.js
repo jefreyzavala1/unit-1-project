@@ -124,7 +124,7 @@ class Pokemon {
   }
 }
 
-Math.floor(Math.random() * 10) + 1;
+Math.floor(Math.random() * 20) + 1;
 function randomPower() {
   return Math.floor(Math.random() * 10) + 1;
 }
@@ -286,6 +286,23 @@ class Game {
     //will call attack when attack is called
   }
 
+  winner(player) {
+    alert(`${player.name} has won`);
+    //open up winning modal
+    const divEl = document.createElement("div");
+    divEl.innerHTML = `<h3>${player.name} has won</h3> <button id="reset">Fight Again!</button>`;
+    divEl.setAttribute("class", "modal");
+    document.querySelector("#battleContainer").appendChild(divEl);
+    document.querySelector("#reset").addEventListener("click", this.resetGame);
+  }
+
+  resetGame() {
+    console.log("Game to reset");
+    //need to display screen play again
+    //reset objects,
+    location.reload();
+  }
+
   setEventClicksToDiv() {
     document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
       //console.log(this.player2.health);
@@ -304,9 +321,12 @@ class Game {
       console.log(abilityobj);
 
       this.player2.health -= abilityobj.power;
-      console.log(`Health of squirtle is ${this.player2.health}`);
+      console.log(`Health of ${this.player2.name} is ${this.player2.health}`);
       if (this.player2.health < 0) {
         console.log(`Player ${players[turn]} have won`);
+        //call winning function
+        this.winner(this.player1);
+        return;
       }
       //console.log(this.player2.health);
 
@@ -333,9 +353,10 @@ class Game {
 
       this.player1.health -= abilityobj.power;
       //console.log(this.player2.health);
-      console.log(`Health of pikachu is ${this.player1.health}`);
+      console.log(`Health of ${this.player1.name} is ${this.player1.health}`);
       if (this.player1.health < 0) {
         console.log(`Player 2 ${players[turn]} has won`);
+        this.winner(this.player2);
       }
 
       //this.displayHealth()
