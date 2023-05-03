@@ -116,10 +116,11 @@ let turn = 0;
 let winner = null;
 
 class Pokemon {
-  constructor(name, abilities) {
+  constructor(name, abilities, img) {
     this.name = name;
     this.health = 100;
     this.abilities = abilities;
+    this.img = img;
   }
 }
 
@@ -132,66 +133,78 @@ const abilities = [
   { abilityName: "thunderbolt", power: randomPower() },
   { abilityName: "static-surge", power: randomPower() },
 ];
-const pikachu = new Pokemon("pikachu", abilities);
+const pikachu = new Pokemon("pikachu", abilities, "asset/pikachu.png");
 
-const charizard = new Pokemon("charizard", [
-  { abilityName: "flamethrower", power: randomPower() },
-  { abilityName: "dragon-claw", power: randomPower() },
-  { abilityName: "wing-attack", power: randomPower() },
-]);
+const charizard = new Pokemon(
+  "charizard",
+  [
+    { abilityName: "flamethrower", power: randomPower() },
+    { abilityName: "dragon-claw", power: randomPower() },
+    { abilityName: "wing-attack", power: randomPower() },
+  ],
+  "asset/charizard.png"
+);
 
-const blastoise = new Pokemon("blastoise", [
-  {
-    abilityName: "hydro-pump",
-    power: randomPower(),
-    abilityName: "ice-beam",
-    power: randomPower(),
-  },
-  { abilityName: "skull-bash", power: randomPower() },
-]);
+const blastoise = new Pokemon(
+  "blastoise",
+  [
+    { abilityName: "hydro-pump", power: randomPower() },
+    { abilityName: "ice-beam", power: randomPower() },
+    { abilityName: "skull-bash", power: randomPower() },
+  ],
+  "asset/blastoise.png"
+);
 
 //not using snorlax const snorlax = new Pokemon('snorlax',[{"thick-"}])
 const machamp = new Pokemon(
   "machamp",
-  {
-    abilityName: "cross-chop",
-    power: randomPower(),
-    abilityName: "dynamic-punch",
-    power: randomPower(),
-  },
-  { abilityName: "stone-edge", power: randomPower() }
+  [
+    { abilityName: "cross-chop", power: randomPower() },
+    { abilityName: "dynamic-punch", power: randomPower() },
+    { abilityName: "stone-edge", power: randomPower() },
+  ],
+  "asset/machamp.png"
 );
 
-const alakazam = new Pokemon("alakazam", {
-  abilityName: "psychic",
-  power: randomPower(),
-  abilityName: "future-sight",
-  power: randomPower(),
-  abilityName: "shadow-ball",
-  power: randomPower(),
-});
+const alakazam = new Pokemon(
+  "alakazam",
+  [
+    { abilityName: "psychic", power: randomPower() },
+    { abilityName: "future-sight", power: randomPower() },
+    { abilityName: "shadow-ball", power: randomPower() },
+  ],
+  "asset/alakazam.png"
+);
 
-const squirtle = new Pokemon("squirtle", [
-  { abilityName: "water-gun", power: randomPower() },
-  { abilityName: "bubble-beam", power: randomPower() },
-  { abilityName: "aqua-tail", power: randomPower() },
-]);
+const squirtle = new Pokemon(
+  "squirtle",
+  [
+    { abilityName: "water-gun", power: randomPower() },
+    { abilityName: "bubble-beam", power: randomPower() },
+    { abilityName: "aqua-tail", power: randomPower() },
+  ],
+  "asset/squirtle.png"
+);
 
 const gyarados = new Pokemon(
   "gyarados",
-  { abilityName: "hydro-pump", power: randomPower() },
-  { crunch: randomPower() },
-  { "dragon-pulse": randomPower() }
+  [
+    { abilityName: "hydro-pump", power: randomPower() },
+    { abilityName: "crunch", power: randomPower() },
+    { abilityName: "dragon-pulse", power: randomPower() },
+  ],
+  "asset/gyarados.png"
 );
 
-const lucario = new Pokemon("lucario", {
-  abilityName: "aura-sphere",
-  power: randomPower(),
-  abilityName: "close-combat",
-  power: randomPower(),
-  abilityName: "flash-cannon",
-  power: randomPower(),
-});
+const lucario = new Pokemon(
+  "lucario",
+  [
+    { abilityName: "aura-sphere", power: randomPower() },
+    { abilityName: "close-combat", power: randomPower() },
+    { abilityName: "flash-cannon", power: randomPower() },
+  ],
+  "asset/lucario.png"
+);
 
 const pokemonObjectArray = [
   pikachu,
@@ -200,6 +213,8 @@ const pokemonObjectArray = [
   machamp,
   alakazam,
   squirtle,
+  gyarados,
+  lucario,
 ];
 
 class Game {
@@ -273,7 +288,7 @@ class Game {
 
   setEventClicksToDiv() {
     document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
-      console.log(this.player2.health);
+      //console.log(this.player2.health);
 
       //reduce player2 health and re render its health div
       //get attack power;
@@ -289,6 +304,10 @@ class Game {
       console.log(abilityobj);
 
       this.player2.health -= abilityobj.power;
+      console.log(`Health of squirtle is ${this.player2.health}`);
+      if (this.player2.health < 0) {
+        console.log(`Player ${players[turn]} have won`);
+      }
       //console.log(this.player2.health);
 
       //this.displayHealth()
@@ -300,7 +319,7 @@ class Game {
       console.log(`attacking now is ${players[turn]}`);
     });
     document.querySelector(".poke2 > div").addEventListener("click", (evt) => {
-      console.log(this.player1.health);
+      //console.log(this.player1.health);
 
       const player2Abilities = this.player2.abilities;
       const targetAbility = evt.target.innerText;
@@ -312,8 +331,12 @@ class Game {
       }
       console.log(abilityobj);
 
-      this.player2.health -= abilityobj.power;
+      this.player1.health -= abilityobj.power;
       //console.log(this.player2.health);
+      console.log(`Health of pikachu is ${this.player1.health}`);
+      if (this.player1.health < 0) {
+        console.log(`Player 2 ${players[turn]} has won`);
+      }
 
       //this.displayHealth()
       turn = turn ? 0 : 1;
@@ -367,14 +390,16 @@ class Game {
     const poke1Pos = document.createElement("div");
     const poke2Pos = document.createElement("div");
     const poke1Img = document.createElement("img");
-    poke1Img.src = "asset/pikachu.png";
+    console.log(this.player1);
+    poke1Img.src = this.player1.img;
     poke1Pos.appendChild(poke1Img);
 
     poke1Pos.setAttribute("class", "poke1");
     poke2Pos.setAttribute("class", "poke2");
 
+    console.log(this.player2);
     const poke2Img = document.createElement("img");
-    poke2Img.src = "asset/squirtle.png";
+    poke2Img.src = this.player2.img;
     poke2Pos.appendChild(poke2Img);
     document.querySelector("#battleContainer").appendChild(poke1Pos);
     document.querySelector("#battleContainer").appendChild(poke2Pos);
