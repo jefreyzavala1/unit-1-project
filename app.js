@@ -229,15 +229,17 @@ class Game {
 
   beginAttack() {
     //go to poke1 class or poke2 create a div container that holds 3 attack buttons
-
+    // console.log(this.player1);
+    // console.log(this.player2);
     this.setDivContainerWithButtons();
     //set player1 as first attacker
 
     const attackingPokemon = document.querySelector(".poke1 > div");
     attackingPokemon.classList.toggle("notattacking");
 
+    this.setEventClicksToDiv();
     //will start the confrontation between pokemons
-    battle();
+    this.battle();
     //create 3 buttons
     // const ability1 = document.createElement("button");
     // ability1.innerText = this.player1.name;
@@ -265,6 +267,74 @@ class Game {
     // });
   }
 
+  battle() {
+    //will call attack when attack is called
+  }
+
+  setEventClicksToDiv() {
+    document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
+      console.log(this.player2.health);
+
+      //reduce player2 health and re render its health div
+      //get attack power;
+
+      const player1Abilities = this.player1.abilities;
+      const targetAbility = evt.target.innerText;
+      let abilityobj = {};
+      for (let ability of player1Abilities) {
+        if (ability.abilityName === targetAbility) {
+          abilityobj = ability;
+        }
+      }
+      console.log(abilityobj);
+
+      this.player2.health -= abilityobj.power;
+      //console.log(this.player2.health);
+
+      //this.displayHealth()
+      turn = turn ? 0 : 1;
+      //toggle class
+      document.querySelector(".poke1 > div").classList.toggle("notattacking");
+      document.querySelector(".poke2 > div").classList.toggle("notattacking");
+
+      console.log(`attacking now is ${players[turn]}`);
+    });
+    document.querySelector(".poke2 > div").addEventListener("click", (evt) => {
+      console.log(this.player1.health);
+
+      const player2Abilities = this.player2.abilities;
+      const targetAbility = evt.target.innerText;
+      let abilityobj = {};
+      for (let ability of player2Abilities) {
+        if (ability.abilityName === targetAbility) {
+          abilityobj = ability;
+        }
+      }
+      console.log(abilityobj);
+
+      this.player2.health -= abilityobj.power;
+      //console.log(this.player2.health);
+
+      //this.displayHealth()
+      turn = turn ? 0 : 1;
+      //toggle class
+      document.querySelector(".poke2 > div").classList.toggle("notattacking");
+      document.querySelector(".poke1 > div").classList.toggle("notattacking");
+
+      console.log(`attacking now is ${players[turn]}`);
+    });
+  }
+
+  // attack(evt) {
+  //   //will need to check whose turn it is
+  //   //then decrease the health of the other pokemon by
+  //   //the power of the buttons ability
+
+  //   console.log(`The player attacking is ${players[turn]}`);
+  //   console.log(`With ability of ${evt.target.innerText}`);
+  //   // console.log(this.player1);
+  //   console.log(evt.target.innerText);
+  // }
   setDivContainerWithButtons() {
     const pokemon1El = document.createElement("div");
     const pokemon2El = document.createElement("div");
