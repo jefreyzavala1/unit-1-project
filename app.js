@@ -133,6 +133,7 @@ const abilities = [
   { abilityName: "static-surge", power: randomPower() },
 ];
 const pikachu = new Pokemon("pikachu", abilities, [
+  "asset/pikachu-fight.jpg",
   "asset/pikachu.png",
   "asset/pikachu-mid-level.png",
   "asset/pikachu-lost.jpg",
@@ -145,7 +146,7 @@ const charizard = new Pokemon(
     { abilityName: "dragon-claw", power: randomPower() },
     { abilityName: "wing-attack", power: randomPower() },
   ],
-  ["asset/charizard.png"]
+  ["asset/charizard-fight.webp", "asset/charizard.png"]
 );
 
 const blastoise = new Pokemon(
@@ -155,7 +156,7 @@ const blastoise = new Pokemon(
     { abilityName: "ice-beam", power: randomPower() },
     { abilityName: "skull-bash", power: randomPower() },
   ],
-  ["asset/blastoise.png"]
+  ["asset/blastoise-fight.webp", "asset/blastoise.png"]
 );
 
 //not using snorlax const snorlax = new Pokemon('snorlax',[{"thick-"}])
@@ -166,7 +167,7 @@ const machamp = new Pokemon(
     { abilityName: "dynamic-punch", power: randomPower() },
     { abilityName: "stone-edge", power: randomPower() },
   ],
-  ["asset/machamp.png"]
+  ["asset/machamp-fight.png", "asset/machamp.png"]
 );
 
 const alakazam = new Pokemon(
@@ -176,7 +177,7 @@ const alakazam = new Pokemon(
     { abilityName: "future-sight", power: randomPower() },
     { abilityName: "shadow-ball", power: randomPower() },
   ],
-  ["asset/alakazam.png"]
+  ["asset/alakazam-fight.webp", "asset/alakazam.png"]
 );
 
 const squirtle = new Pokemon(
@@ -186,7 +187,7 @@ const squirtle = new Pokemon(
     { abilityName: "bubble-beam", power: randomPower() },
     { abilityName: "aqua-tail", power: randomPower() },
   ],
-  ["asset/squirtle.png"]
+  ["asset/squirtle-fight.jpg", "asset/squirtle.png"]
 );
 
 const gyarados = new Pokemon(
@@ -196,7 +197,7 @@ const gyarados = new Pokemon(
     { abilityName: "crunch", power: randomPower() },
     { abilityName: "dragon-pulse", power: randomPower() },
   ],
-  ["asset/gyarados.png"]
+  ["asset/gyarados-fight.png", "asset/gyarados.png"]
 );
 
 const lucario = new Pokemon(
@@ -206,7 +207,7 @@ const lucario = new Pokemon(
     { abilityName: "close-combat", power: randomPower() },
     { abilityName: "flash-cannon", power: randomPower() },
   ],
-  ["asset/lucario.png"]
+  ["asset/lucario-fight.png", "asset/lucario.png"]
 );
 
 const pokemonObjectArray = [
@@ -309,10 +310,10 @@ class Game {
     //check health and update img src based on health
     //.poke1 > img , .poke2 > img
     if (this.player1.health < 0) {
-      document.querySelector(".poke1 > img").src = this.player1.img[2];
+      document.querySelector(".poke1 > img").src = this.player1.img[3];
     } else {
       if (this.player1.health < 50) {
-        document.querySelector(".poke1 > img").src = this.player1.img[1];
+        document.querySelector(".poke1 > img").src = this.player1.img[2];
       }
     }
   }
