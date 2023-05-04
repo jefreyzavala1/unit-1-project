@@ -124,16 +124,19 @@ class Pokemon {
   }
 }
 
-Math.floor(Math.random() * 20) + 1;
 function randomPower() {
-  return Math.floor(Math.random() * 10) + 1;
+  return Math.floor(Math.random() * 20) + 1;
 }
 const abilities = [
   { abilityName: "iron-tail", power: randomPower() },
   { abilityName: "thunderbolt", power: randomPower() },
   { abilityName: "static-surge", power: randomPower() },
 ];
-const pikachu = new Pokemon("pikachu", abilities, "asset/pikachu.png");
+const pikachu = new Pokemon("pikachu", abilities, [
+  "asset/pikachu.png",
+  "asset/pikachu-mid-level.png",
+  "asset/pikachu-lost.jpg",
+]);
 
 const charizard = new Pokemon(
   "charizard",
@@ -142,7 +145,7 @@ const charizard = new Pokemon(
     { abilityName: "dragon-claw", power: randomPower() },
     { abilityName: "wing-attack", power: randomPower() },
   ],
-  "asset/charizard.png"
+  ["asset/charizard.png"]
 );
 
 const blastoise = new Pokemon(
@@ -152,7 +155,7 @@ const blastoise = new Pokemon(
     { abilityName: "ice-beam", power: randomPower() },
     { abilityName: "skull-bash", power: randomPower() },
   ],
-  "asset/blastoise.png"
+  ["asset/blastoise.png"]
 );
 
 //not using snorlax const snorlax = new Pokemon('snorlax',[{"thick-"}])
@@ -163,7 +166,7 @@ const machamp = new Pokemon(
     { abilityName: "dynamic-punch", power: randomPower() },
     { abilityName: "stone-edge", power: randomPower() },
   ],
-  "asset/machamp.png"
+  ["asset/machamp.png"]
 );
 
 const alakazam = new Pokemon(
@@ -173,7 +176,7 @@ const alakazam = new Pokemon(
     { abilityName: "future-sight", power: randomPower() },
     { abilityName: "shadow-ball", power: randomPower() },
   ],
-  "asset/alakazam.png"
+  ["asset/alakazam.png"]
 );
 
 const squirtle = new Pokemon(
@@ -183,7 +186,7 @@ const squirtle = new Pokemon(
     { abilityName: "bubble-beam", power: randomPower() },
     { abilityName: "aqua-tail", power: randomPower() },
   ],
-  "asset/squirtle.png"
+  ["asset/squirtle.png"]
 );
 
 const gyarados = new Pokemon(
@@ -193,7 +196,7 @@ const gyarados = new Pokemon(
     { abilityName: "crunch", power: randomPower() },
     { abilityName: "dragon-pulse", power: randomPower() },
   ],
-  "asset/gyarados.png"
+  ["asset/gyarados.png"]
 );
 
 const lucario = new Pokemon(
@@ -203,7 +206,7 @@ const lucario = new Pokemon(
     { abilityName: "close-combat", power: randomPower() },
     { abilityName: "flash-cannon", power: randomPower() },
   ],
-  "asset/lucario.png"
+  ["asset/lucario.png"]
 );
 
 const pokemonObjectArray = [
@@ -302,6 +305,17 @@ class Game {
     // });
   }
 
+  updateImgStatus() {
+    //check health and update img src based on health
+    //.poke1 > img , .poke2 > img
+    if (this.player1.health < 0) {
+      document.querySelector(".poke1 > img").src = this.player1.img[2];
+    } else {
+      if (this.player1.health < 50) {
+        document.querySelector(".poke1 > img").src = this.player1.img[1];
+      }
+    }
+  }
   battle() {
     //will call attack when attack is called
   }
@@ -342,7 +356,7 @@ class Game {
 
       this.player2.health -= abilityobj.power;
       const player2Health = document.querySelector(".health-bar");
-
+      this.updateImgStatus();
       player2Health.nextElementSibling.style.setProperty(
         "--percentage",
         this.player2.health.toString()
@@ -381,7 +395,7 @@ class Game {
       this.player1.health -= abilityobj.power;
 
       const player1Health = document.querySelector(".health-bar");
-
+      this.updateImgStatus();
       player1Health.style.setProperty(
         "--percentage",
         this.player1.health.toString()
@@ -446,7 +460,7 @@ class Game {
     const poke2Pos = document.createElement("div");
     const poke1Img = document.createElement("img");
     console.log(this.player1);
-    poke1Img.src = this.player1.img;
+    poke1Img.src = this.player1.img[0];
     poke1Pos.appendChild(poke1Img);
 
     poke1Pos.setAttribute("class", "poke1");
@@ -454,7 +468,7 @@ class Game {
 
     console.log(this.player2);
     const poke2Img = document.createElement("img");
-    poke2Img.src = this.player2.img;
+    poke2Img.src = this.player2.img[0];
     poke2Pos.appendChild(poke2Img);
     document.querySelector("#battleContainer").appendChild(poke1Pos);
     document.querySelector("#battleContainer").appendChild(poke2Pos);
