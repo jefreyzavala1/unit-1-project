@@ -298,32 +298,6 @@ class Game {
 
     this.setEventClicksToAttackDiv();
     //will start the confrontation between pokemons
-    this.battle();
-    //create 3 buttons
-    // const ability1 = document.createElement("button");
-    // ability1.innerText = this.player1.name;
-
-    // const ability2 = document.createElement("button");
-    // ability2.innerText = this.player2.name;
-
-    // const ability3 = document.createElement("button");
-    // ability3.innerText = this.player1.name;
-
-    // console.log(this.player1.abilities);
-    // for (let ability of this.player1.abilities) {
-    //   const btn = document.createElement("button");
-    //   btn.innerText = ability.abilityName;
-    //   pokemon1El.appendChild(btn);
-    // }
-    // document.querySelector(".poke1").appendChild(pokemon1El);
-    // document.querySelector(".poke2").appendChild(pokemon2El);
-
-    // pokemon1El.classList.toggle("notattacking");
-    // pokemon1El.addEventListener("click", (evt) => {
-    //   console.log("Player1 attacked so its player 2");
-    //   pokemon1El.classList.toggle("notattacking");
-    //   pokemon2El.classList.toggle("notattacking");
-    // });
   }
 
   createDivContainerWithAttackButtons() {
@@ -353,46 +327,6 @@ class Game {
       btn.innerText = ability.abilityName;
       pokemon2El.appendChild(btn);
     }
-  }
-
-  updateImgStatus() {
-    //check health and update img src based on health
-    //.poke1 > img , .poke2 > img
-    if (this.player1.health < 0) {
-      document.querySelector(".poke1 > img").src = this.player1.img[3];
-    } else {
-      if (this.player1.health < 50) {
-        document.querySelector(".poke1 > img").src = this.player1.img[2];
-      }
-    }
-
-    if (this.player2.health < 0) {
-      document.querySelector(".poke2 > img").src = this.player2.img[3];
-    } else {
-      if (this.player2.health < 50) {
-        document.querySelector(".poke2 > img").src = this.player2.img[2];
-      }
-    }
-  }
-  battle() {
-    //will call attack when attack is called
-  }
-
-  winner(player) {
-    alert(`${player.name} has won`);
-    //open up winning modal
-    const divEl = document.createElement("div");
-    divEl.innerHTML = `<h3>${player.name} has won</h3> <button id="reset">Fight Again!</button>`;
-    divEl.setAttribute("class", "modal");
-    document.querySelector("#battleContainer").appendChild(divEl);
-    document.querySelector("#reset").addEventListener("click", this.resetGame);
-  }
-
-  resetGame() {
-    console.log("Game to reset");
-    //need to display screen play again
-    //reset objects,
-    location.reload();
   }
 
   setEventClicksToAttackDiv() {
@@ -467,19 +401,56 @@ class Game {
       "--percentage",
       this.player1.health.toString()
     );
-    //console.log(this.player2.health);
+
     console.log(`Health of ${this.player1.name} is ${this.player1.health}`);
-    if (this.player1.health < 0) {
+    if (this.player1.health <= 0) {
       console.log(`Player 2 ${players[turn]} has won`);
       this.winner(this.player2);
+      return;
     }
 
-    //this.displayHealth()
     turn = turn ? 0 : 1;
     //toggle class
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
 
     console.log(`attacking now is ${players[turn]}`);
+  }
+
+  updateImgStatus() {
+    //check health and update img src based on health
+    //.poke1 > img , .poke2 > img
+    if (this.player1.health <= 0) {
+      document.querySelector(".poke1 > img").src = this.player1.img[3];
+    } else {
+      if (this.player1.health <= 50) {
+        document.querySelector(".poke1 > img").src = this.player1.img[2];
+      }
+    }
+
+    if (this.player2.health <= 0) {
+      document.querySelector(".poke2 > img").src = this.player2.img[3];
+    } else {
+      if (this.player2.health <= 50) {
+        document.querySelector(".poke2 > img").src = this.player2.img[2];
+      }
+    }
+  }
+
+  winner(player) {
+    alert(`${player.name} has won`);
+    //open up winning modal
+    const divEl = document.createElement("div");
+    divEl.innerHTML = `<h3>${player.name} has won</h3> <button id="reset">Fight Again!</button>`;
+    divEl.setAttribute("class", "modal");
+    document.querySelector("#battleContainer").appendChild(divEl);
+    document.querySelector("#reset").addEventListener("click", this.resetGame);
+  }
+
+  resetGame() {
+    console.log("Game to reset");
+    //need to display screen play again
+    //reset objects,
+    location.reload();
   }
 }
