@@ -134,7 +134,7 @@ button:hover {
 
 .poke1,
 .poke2 {
-  border: solid red 1px;
+  /* border: solid red 1px; */
   position: absolute;
 }
 
@@ -149,4 +149,23 @@ button:hover {
 }
 .notattacking {
   display: none;
+}
+
+.poke1 > div,
+.poke2 > div {
+  /* border: blue solid 2px; */
+  height: 25%;
+  padding-top: 5%;
+}
+.poke1 > img {
+  /* border: solid purple 2px; */
+  display: block;
+  margin-left: 63%;
+}
+
+.poke2 > img {
+  border: solid green 2px;
+  text-align: right;
+  display: block;
+  margin: 0;
 }
