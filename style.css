@@ -125,7 +125,7 @@ button:hover {
 }
 #battleContainer {
   position: relative;
-  border: solid black 1px;
+  /* border: solid black 1px; */
   height: 80vh;
   background-repeat: no-repeat;
   background-size: 80%;
@@ -164,7 +164,7 @@ button:hover {
 }
 
 .poke2 > img {
-  border: solid green 2px;
+  /* border: solid green 2px; */
   text-align: right;
   display: block;
   margin: 0;

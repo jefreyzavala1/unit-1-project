@@ -223,10 +223,10 @@ const pokemonObjectArray = [
 ];
 
 const battleGrounds = [
-  "asset/background-1.png",
   "asset/background-2.png",
   "asset/background-3.png",
   "asset/background-4.png",
+  "asset/back.jpeg",
 ];
 
 class Game {
