@@ -222,9 +222,12 @@ const pokemonObjectArray = [
   lucario,
 ];
 
-//cached elements
-const pokemon1Div = document.querySelector(".poke1 > div");
-const pokemon2Div = document.querySelector(".poke2 > div");
+const battleGrounds = [
+  "asset/background-1.png",
+  "asset/background-2.png",
+  "asset/background-3.png",
+  "asset/background-4.png",
+];
 
 class Game {
   constructor(player1, player2) {
@@ -267,6 +270,14 @@ class Game {
     containerEl.appendChild(player2Health);
     containerEl.classList.add("healthStatus");
     document.querySelector("#battleContainer").appendChild(containerEl);
+
+    //set battle field
+
+    document.querySelector("#battleContainer").style.backgroundImage = `url(${
+      battleGrounds[Math.floor(Math.random() * 4)]
+    })`;
+    document.body.style.background =
+      "linear-gradient(to bottom, #4e4a4a, #b5b5b5, #4e4a4a)";
   }
 
   setPokemonsPosition() {
