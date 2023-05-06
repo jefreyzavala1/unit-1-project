@@ -6,6 +6,8 @@ body {
   margin: 0;
   font-family: "Indie Flower", cursive;
   background-image: url("asset/pokemon-battle.png");
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -85,12 +87,12 @@ span {
   filter: brightness(120%);
 }
 
-button {
+.modal button {
   padding: 10px;
   font-family: "Indie Flower", cursive;
   font-size: 2rem;
 }
-button:hover {
+.modal button:hover {
   cursor: pointer;
   background-color: #ffcb05;
 }
@@ -98,8 +100,44 @@ button:hover {
 .mainscreen {
   display: none;
 }
+body {
+  background-color: blue;
+}
+#battleContainer {
+  border: solid green;
+  /* position: relative;
+  /* border: solid black 1px; 
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center; */
 
-.healthStatus {
+  height: 70vh;
+  width: 80vw;
+  margin-left: 10%;
+}
+#battleContainer .healthStatus {
+  height: 15%;
+  border: purple 1px solid;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#battleContainer .healthStatus h2 {
+  /* margin: 0;
+  height: 50%; */
+  width: 45%;
+  border: 1px solid black;
+  text-align: center;
+}
+#battleContainer .poke1 {
+  display: none;
+}
+
+#battleContainer .poke2 {
+  display: none;
+}
+/* .healthStatus {
   display: flex;
 
   justify-content: center;
@@ -109,7 +147,7 @@ button:hover {
 .healthStatus > h2 {
   border: 1px solid black;
   width: 39%;
-  /* background: linear-gradient(to right, red 0%, pink 70%, white 80%); */
+  /* background: linear-gradient(to right, red 0%, pink 70%, white 80%); 
 }
 
 .health-bar {
@@ -128,18 +166,10 @@ button:hover {
 .poke2 img {
   height: 20vh;
 }
-#battleContainer {
-  position: relative;
-  /* border: solid black 1px; */
-  height: 80vh;
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: center;
-}
 
 .poke1,
 .poke2 {
-  /* border: solid red 1px; */
+  /* border: solid red 1px; 
   position: absolute;
 }
 
@@ -158,19 +188,19 @@ button:hover {
 
 .poke1 > div,
 .poke2 > div {
-  /* border: blue solid 2px; */
+  /* border: blue solid 2px; 
   height: 25%;
   padding-top: 5%;
 }
 .poke1 > img {
-  /* border: solid purple 2px; */
+  /* border: solid purple 2px; 
   display: block;
   margin-left: 63%;
 }
 
 .poke2 > img {
-  /* border: solid green 2px; */
+  /* border: solid green 2px; 
   text-align: right;
   display: block;
   margin: 0;
-}
+} */

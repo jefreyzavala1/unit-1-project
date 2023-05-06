@@ -69,6 +69,8 @@ function init() {
 
     const game = new Game(poke1, poke2);
     //start game
+    containerEl.remove();
+    h2El.remove();
     game.start();
   });
 }
@@ -112,9 +114,21 @@ function randomPower() {
 const pikachu = new Pokemon(
   "pikachu",
   [
-    { abilityName: "iron-tail", power: randomPower() },
-    { abilityName: "thunderbolt", power: randomPower() },
-    { abilityName: "static-surge", power: randomPower() },
+    {
+      abilityName: "iron-tail",
+      power: randomPower(),
+      img: "asset/pikachu-iron-tail.jpg",
+    },
+    {
+      abilityName: "thunderbolt",
+      power: randomPower(),
+      img: "asset/pikachu-thunder-bolt.png",
+    },
+    {
+      abilityName: "static-surge",
+      power: randomPower(),
+      img: "asset/pikachu-fight.jpg",
+    },
   ],
   [
     "asset/pikachu.png",
@@ -198,9 +212,21 @@ const gyarados = new Pokemon(
 const lucario = new Pokemon(
   "lucario",
   [
-    { abilityName: "aura-sphere", power: randomPower() },
-    { abilityName: "close-combat", power: randomPower() },
-    { abilityName: "flash-cannon", power: randomPower() },
+    {
+      abilityName: "aura-sphere",
+      power: randomPower(),
+      img: "asset/lucario-aura-sphere.png",
+    },
+    {
+      abilityName: "close-combat",
+      power: randomPower(),
+      img: "asset/lucario-close-combat.webp",
+    },
+    {
+      abilityName: "flash-cannon",
+      power: randomPower(),
+      img: "asset/lucario-flash-cannon.webp",
+    },
   ],
   [
     "asset/lucario.png",
@@ -261,9 +287,9 @@ class Game {
   createBattleField() {
     const containerEl = document.createElement("div");
     const player1Health = document.createElement("h2");
-    player1Health.innerText = this.player1.name;
+    player1Health.innerText = `${this.player1.name} ${this.player1.health}%`;
     const player2Health = document.createElement("h2");
-    player2Health.innerText = this.player2.name;
+    player2Health.innerText = `${this.player2.name} ${this.player2.health}%`;
 
     this.setHealthStatusBar(player1Health, player2Health);
     containerEl.appendChild(player1Health);
@@ -273,11 +299,11 @@ class Game {
 
     //set battle field
 
-    document.querySelector("#battleContainer").style.backgroundImage = `url(${
-      battleGrounds[Math.floor(Math.random() * 4)]
-    })`;
-    document.body.style.background =
-      "linear-gradient(to bottom, #4e4a4a, #b5b5b5, #4e4a4a)";
+    // document.querySelector("#battleContainer").style.backgroundImage = `url(${
+    //   battleGrounds[Math.floor(Math.random() * 4)]
+    // })`;
+    // document.body.style.background =
+    //   "linear-gradient(to bottom, #4e4a4a, #b5b5b5, #4e4a4a)";
   }
 
   setPokemonsPosition() {
@@ -361,6 +387,7 @@ class Game {
     //get attack power;
     console.log(this.player1);
     const player1Abilities = this.player1.abilities;
+    const poke1Div = document.querySelector(".poke1 > img");
     const targetAbility = evt.target.innerText;
     let abilityobj = {};
     for (let ability of player1Abilities) {
@@ -368,8 +395,9 @@ class Game {
         abilityobj = ability;
       }
     }
-    console.log(abilityobj);
 
+    console.log(abilityobj);
+    poke1Div.src = abilityobj.img;
     this.player2.health -= abilityobj.power;
     const player2Health = document.querySelector(".health-bar");
     this.updateImgStatus();
@@ -401,6 +429,8 @@ class Game {
 
     const player2Abilities = this.player2.abilities;
     const targetAbility = evt.target.innerText;
+    const poke2Div = document.querySelector(".poke2 > img");
+
     let abilityobj = {};
     for (let ability of player2Abilities) {
       if (ability.abilityName === targetAbility) {
@@ -408,7 +438,7 @@ class Game {
       }
     }
     console.log(abilityobj);
-
+    poke2Div.src = abilityobj.img;
     this.player1.health -= abilityobj.power;
 
     const player1Health = document.querySelector(".health-bar");
