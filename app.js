@@ -342,7 +342,9 @@ class Game {
 
   setEventClicksToAttackDiv() {
     document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
-      this.pokemon1Attack(evt);
+      if (evt.target.value === "undefined") {
+        console.log("Incorrect click");
+      }
     });
     document.querySelector(".poke2 > div").addEventListener("click", (evt) => {
       this.pokemon2Attack(evt);

@@ -39,6 +39,7 @@ h3 {
 .unclickable {
   pointer-events: none;
 }
+
 .container > div {
   margin-top: 2%;
   border: 1px solid black;
