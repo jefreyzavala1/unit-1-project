@@ -67,7 +67,7 @@ function init() {
       }
     }
 
-    const game = new Game(poke1, poke2);
+    const game = new Game(poke2, poke1);
     //start game
     // containerEl.remove();
     // h2El.remove();
@@ -131,8 +131,8 @@ const pikachu = new Pokemon(
     },
   ],
   [
-    "asset/pikaddchu.png",
-    "asset/pikachu-fi22ght.jpg",
+    "asset/pikachu.png",
+    "asset/pikachu-fight.jpg",
     "asset/pikachu-mid-level.png",
     "asset/pikachu-lost.jpg",
   ]
@@ -230,7 +230,7 @@ const lucario = new Pokemon(
   ],
   [
     "asset/lusscario.png",
-    "asset/lucario-fi22ght.png",
+    "asset/lucario-fight.png",
     "asset/lucario-mid-fight.webp",
     "asset/lucario-lost.png",
   ]
@@ -345,6 +345,13 @@ class Game {
     const pokemon1El = document.createElement("div");
     const pokemon2El = document.createElement("div");
 
+    const poke1H4El = document.createElement("h4");
+    const poke2H4El = document.createElement("h4");
+    poke1H4El.innerText = "Select Your attack";
+    poke2H4El.innerText = "Select Your attack";
+
+    poke1H4El.setAttribute("class", "notattacking");
+    poke2H4El.setAttribute("class", "notattacking");
     pokemon1El.setAttribute("class", "notattacking");
     pokemon2El.setAttribute("class", "notattacking");
 
@@ -352,6 +359,9 @@ class Game {
 
     document.querySelector(".poke1").appendChild(pokemon1El);
     document.querySelector(".poke2").appendChild(pokemon2El);
+
+    document.querySelector(".poke1").appendChild(poke1H4El);
+    document.querySelector(".poke2").appendChild(poke2H4El);
   }
 
   createAbilitiesButtonAndAppendToPokemonDiv(pokemon1El, pokemon2El) {
@@ -424,6 +434,9 @@ class Game {
     //toggle class
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
+    document
+      .querySelector(".poke1 > div > h4")
+      .classList.toggle("notattacking");
 
     console.log(`attacking now is ${players[turn]}`);
   }
