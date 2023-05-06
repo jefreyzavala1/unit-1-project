@@ -27,11 +27,11 @@ h3 {
 }
 .container {
   /* border: 1px solid red; */
-  height: 35vh;
+  height: 50%;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-  width: 40vh;
+  width: 40%;
+  justify-content: space-around;
   margin: 0 auto;
   border-radius: 1%;
   background-color: white;
@@ -40,13 +40,14 @@ h3 {
   pointer-events: none;
 }
 .container > div {
-  margin-top: 2%;
+  margin:2% auto;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5%;
   background-color: rgb(223, 159, 159);
+  width: 25%;
 }
 span {
   background-color: rgb(223, 159, 159);
