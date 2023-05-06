@@ -101,7 +101,6 @@ span {
   display: none;
 }
 body {
-  background-color: blue;
 }
 #battleContainer {
   border: solid green;
@@ -130,12 +129,45 @@ body {
   border: 1px solid black;
   text-align: center;
 }
+#battleContainer .poke1,
+#battleContainer .poke2 {
+  border: solid 1px red;
+  height: 40%;
+  position: relative;
+}
+#battleContainer .poke1 > img {
+  margin-top: 2%;
+  /* border: solid black 1px; */
+  position: absolute;
+  right: ;
+}
+#battleContainer .poke1 > div {
+  height: 30%;
+  width: 30%;
+  border: red 4px solid;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 70%;
+}
+
+#battleContainer .poke2 > div {
+  height: 30%;
+  width: 30%;
+  border: blue 4px solid;
+  display: flex;
+  justify-content: space-evenly;
+}
 #battleContainer .poke1 {
-  display: none;
+  text-align: right;
+  border: solid orange 1px;
 }
 
 #battleContainer .poke2 {
-  display: none;
+  text-align: left;
+  border: solid blue 1px;
+}
+#battleContainer .poke2 > img {
+  position: absolute;
 }
 /* .healthStatus {
   display: flex;

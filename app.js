@@ -69,8 +69,8 @@ function init() {
 
     const game = new Game(poke1, poke2);
     //start game
-    containerEl.remove();
-    h2El.remove();
+    // containerEl.remove();
+    // h2El.remove();
     game.start();
   });
 }
@@ -131,8 +131,8 @@ const pikachu = new Pokemon(
     },
   ],
   [
-    "asset/pikachu.png",
-    "asset/pikachu-fight.jpg",
+    "asset/pikaddchu.png",
+    "asset/pikachu-fi22ght.jpg",
     "asset/pikachu-mid-level.png",
     "asset/pikachu-lost.jpg",
   ]
@@ -229,8 +229,8 @@ const lucario = new Pokemon(
     },
   ],
   [
-    "asset/lucario.png",
-    "asset/lucario-fight.png",
+    "asset/lusscario.png",
+    "asset/lucario-fi22ght.png",
     "asset/lucario-mid-fight.webp",
     "asset/lucario-lost.png",
   ]
@@ -287,9 +287,13 @@ class Game {
   createBattleField() {
     const containerEl = document.createElement("div");
     const player1Health = document.createElement("h2");
-    player1Health.innerText = `${this.player1.name} ${this.player1.health}%`;
+    player1Health.innerText = `${this.player1.name.toUpperCase()} ${
+      this.player1.health
+    }%`;
     const player2Health = document.createElement("h2");
-    player2Health.innerText = `${this.player2.name} ${this.player2.health}%`;
+    player2Health.innerText = `${this.player2.name.toUpperCase()} ${
+      this.player2.health
+    }%`;
 
     this.setHealthStatusBar(player1Health, player2Health);
     containerEl.appendChild(player1Health);
