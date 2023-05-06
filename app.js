@@ -342,12 +342,15 @@ class Game {
 
   setEventClicksToAttackDiv() {
     document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
-      if (evt.target.value === "undefined") {
-        console.log("Incorrect click");
+      //if(evt.target.contains)
+      if (evt.target.tagName === "BUTTON") {
+        this.pokemon1Attack(evt);
       }
     });
     document.querySelector(".poke2 > div").addEventListener("click", (evt) => {
-      this.pokemon2Attack(evt);
+      if (evt.target.tagName === "BUTTON") {
+        this.pokemon2Attack(evt);
+      }
     });
   }
 

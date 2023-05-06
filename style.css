@@ -39,9 +39,12 @@ h3 {
 .unclickable {
   pointer-events: none;
 }
+.container {
+  padding: 1%;
+}
 
 .container > div {
-  margin:2% auto;
+  margin: 2% auto;
   border: 1px solid black;
   display: flex;
   justify-content: center;
