@@ -131,7 +131,7 @@ body {
 }
 #battleContainer .poke1,
 #battleContainer .poke2 {
-  border: solid 1px red;
+  /* border: solid 1px red; */
   height: 40%;
   position: relative;
 }
@@ -140,7 +140,7 @@ body {
   /* border: solid black 1px; */
   position: absolute;
   right: 30%;
-  top: 20%;
+  top: 14%;
   width: 40%;
   height: 70%;
   object-fit: contain;
@@ -190,13 +190,7 @@ body {
 
   justify-content: center;
   gap: 20px;
-}
-
-.healthStatus > h2 {
-  border: 1px solid black;
-  width: 39%;
-  /* background: linear-gradient(to right, red 0%, pink 70%, white 80%); 
-}
+} */
 
 .health-bar {
   background: linear-gradient(
@@ -207,33 +201,33 @@ body {
     white 100%
   );
 }
-.poke1 img {
-  height: 20vh;
-}
 
-.poke2 img {
-  height: 20vh;
-}
-
-.poke1,
-.poke2 {
-  /* border: solid red 1px; 
-  position: absolute;
-}
-
-.poke1 {
-  top: 48vh;
-  left: 25vh;
-}
-
-.poke2 {
-  right: 25vh;
-  top: 30vh;
-}
 .notattacking {
-  display: none;
+  visibility: hidden;
 }
 
+.left-pokemon-attack {
+  animation: attackToRight 1s ease-in-out;
+}
+
+@keyframes attackToRight {
+  0% {
+    right: 20%;
+  }
+  50% {
+    top: 40%;
+    right: 50%;
+  }
+
+  100% {
+    bottom: 10%;
+    left: 20%;
+  }
+}
+.right-pokemon-attack {
+  background: blue;
+}
+/*
 .poke1 > div,
 .poke2 > div {
   /* border: blue solid 2px; 
