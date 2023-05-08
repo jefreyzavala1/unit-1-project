@@ -119,17 +119,17 @@ const pikachu = new Pokemon(
     {
       abilityName: "iron-tail",
       power: randomPower(),
-      img: "asset/pikachu-iron-tail.jpg",
+      img: "asset/pikachu-iron-tail.gif",
     },
     {
-      abilityName: "thunderbolt",
+      abilityName: "thunder-bolt",
       power: randomPower(),
-      img: "asset/pikachu-thunder-bolt.png",
+      img: "asset/pikachu-thunder-bolt.gif",
     },
     {
-      abilityName: "static-surge",
+      abilityName: "electro-bolt",
       power: randomPower(),
-      img: "asset/pikachu-fight.jpg",
+      img: "asset/electro-bolt-pikachu.gif",
     },
   ],
   [
@@ -143,12 +143,24 @@ const pikachu = new Pokemon(
 const charizard = new Pokemon(
   "charizard",
   [
-    { abilityName: "flamethrower", power: randomPower() },
-    { abilityName: "dragon-claw", power: randomPower() },
-    { abilityName: "wing-attack", power: randomPower() },
+    {
+      abilityName: "flamethrower",
+      power: randomPower(),
+      img: "asset/charizard-flamethrower.gif",
+    },
+    {
+      abilityName: "solar-power",
+      power: randomPower(),
+      img: "asset/charizard-solar-power.gif",
+    },
+    {
+      abilityName: "wing-attack",
+      power: randomPower(),
+      img: "asset/charizard-wing-attack.gif",
+    },
   ],
   [
-    "asset/charizard.png",
+    "asset/charizard-pokemon.gif",
     "asset/charizard-fight.webp",
     "asset/charizard-mid-fight.jpg",
     "asset/charizard-lost.png",
@@ -158,12 +170,24 @@ const charizard = new Pokemon(
 const blastoise = new Pokemon(
   "blastoise",
   [
-    { abilityName: "hydro-pump", power: randomPower() },
-    { abilityName: "ice-beam", power: randomPower() },
-    { abilityName: "skull-bash", power: randomPower() },
+    {
+      abilityName: "hydro-pump",
+      power: randomPower(),
+      img: "asset/blastoise-hydro-pump.gif",
+    },
+    {
+      abilityName: "mega-launcher",
+      power: randomPower(),
+      img: "asset/blastoise-mega-launcher.gif",
+    },
+    {
+      abilityName: "skull-bash",
+      power: randomPower(),
+      img: "asset/blastoise-skull-bash.gif",
+    },
   ],
   [
-    "asset/blastoise.png",
+    "asset/blastoise-pokemon.gif",
     "asset/blastoise-fight.webp",
     ,
     "asset/blastoise-mid-fight.png",
@@ -194,9 +218,21 @@ const alakazam = new Pokemon(
 const squirtle = new Pokemon(
   "squirtle",
   [
-    { abilityName: "water-gun", power: randomPower() },
-    { abilityName: "bubble-beam", power: randomPower() },
-    { abilityName: "aqua-tail", power: randomPower() },
+    {
+      abilityName: "water-gun",
+      power: randomPower(),
+      img: "asset/squirtle-water-gun.gif",
+    },
+    {
+      abilityName: "bubble-beam",
+      power: randomPower(),
+      img: "asset/squirtle-bubble-beam.gif",
+    },
+    {
+      abilityName: "aqua-tail",
+      power: randomPower(),
+      img: "asset/squirtle-aqua-tail.gif",
+    },
   ],
   ["asset/squirtle-new.gif", "asset/squirtle-fight.jpg"]
 );

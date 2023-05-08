@@ -144,7 +144,7 @@ body {
   width: 40%;
   height: 70%;
   object-fit: contain;
-  border: solid red 1px;
+  /* border: solid red 1px; */
   padding-left: 25%;
 }
 #battleContainer .poke1 > div {
@@ -180,7 +180,7 @@ body {
   height: 70%;
   left: 30%;
   object-fit: contain;
-  border: 1px blue solid;
+  /* border: 1px blue solid; */
   padding-right: 27%;
   padding-top: 0%;
   padding-bottom: 0%;
@@ -206,7 +206,7 @@ body {
   visibility: hidden;
 }
 
-.left-pokemon-attack {
+/* .left-pokemon-attack {
   animation: attackToRight 1s ease-in-out;
 }
 
@@ -226,7 +226,7 @@ body {
 }
 .right-pokemon-attack {
   background: blue;
-}
+} */
 /*
 .poke1 > div,
 .poke2 > div {
