@@ -47,7 +47,7 @@ h3 {
 
 .container > div {
   margin: 2% auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,10 +114,13 @@ body {
   height: 70vh;
   width: 80vw;
   margin-left: 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 #battleContainer .healthStatus {
   height: 15%;
-  border: purple 1px solid;
+  /* border: purple 1px solid; */
   display: flex;
   justify-content: space-evenly;
 }
@@ -126,8 +129,9 @@ body {
   /* margin: 0;
   height: 50%; */
   width: 45%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   text-align: center;
+  height: 45%;
 }
 #battleContainer .poke1,
 #battleContainer .poke2 {
@@ -146,11 +150,12 @@ body {
   object-fit: contain;
   /* border: solid red 1px; */
   padding-left: 25%;
+  z-index: 0;
 }
 #battleContainer .poke1 > div {
   height: 30%;
   width: 30%;
-  border: red 4px solid;
+  /* border: red 4px solid; */
   display: flex;
   justify-content: space-evenly;
   margin-left: 70%;
@@ -165,12 +170,12 @@ body {
 }
 #battleContainer .poke1 {
   text-align: right;
-  border: solid orange 1px;
+  /* border: solid orange 1px; */
 }
 
 #battleContainer .poke2 {
   text-align: left;
-  border: solid blue 1px;
+  /* border: solid blue 1px; */
 }
 #battleContainer .poke2 > img {
   position: absolute;
@@ -184,6 +189,7 @@ body {
   padding-right: 27%;
   padding-top: 0%;
   padding-bottom: 0%;
+  z-index: 5;
 }
 /* .healthStatus {
   display: flex;
@@ -206,27 +212,39 @@ body {
   visibility: hidden;
 }
 
-/* .left-pokemon-attack {
-  animation: attackToRight 1s ease-in-out;
+h4 {
+  color: red;
+  font-size: 1.5rem;
+}
+
+#battleContainer button {
+  cursor: pointer;
+}
+
+.left-pokemon-attack {
+  animation: attackToRight 4s ease-in-out;
 }
 
 @keyframes attackToRight {
   0% {
-    right: 20%;
+    right: 2%;
+    bottom: 100%;
   }
   50% {
-    top: 40%;
+    bottom: 50%;
     right: 50%;
+    transform: translate(75%, -95%);
   }
 
   100% {
-    bottom: 10%;
+    bottom: 100%;
     left: 20%;
+    transform: translate(0, 0);
   }
 }
 .right-pokemon-attack {
   background: blue;
-} */
+}
 /*
 .poke1 > div,
 .poke2 > div {

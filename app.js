@@ -306,12 +306,7 @@ const pokemonObjectArray = [
   lucario,
 ];
 
-const battleGrounds = [
-  "asset/background-2.png",
-  "asset/background-3.png",
-  "asset/background-4.png",
-  "asset/back.jpeg",
-];
+const battleGrounds = ["asset/pokemon-stadium.png"];
 
 class Game {
   constructor(player1, player2) {
@@ -357,9 +352,9 @@ class Game {
 
     //set battle field
 
-    // document.querySelector("#battleContainer").style.backgroundImage = `url(${
-    //   battleGrounds[Math.floor(Math.random() * 4)]
-    // })`;
+    document.querySelector(
+      "#battleContainer"
+    ).style.backgroundImage = `url(${battleGrounds[0]})`;
     // document.body.style.background =
     //   "linear-gradient(to bottom, #4e4a4a, #b5b5b5, #4e4a4a)";
   }
