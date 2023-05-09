@@ -203,5 +203,27 @@ h4 {
 
 @media (max-width: 390px) {
   .container > div {
-    width: 100%;
+    width: 50%;
+  }
+}
+
+@media (min-width: 391px) and (max-width: 618px) {
+  .container {
+    border: solid yellow 1px;
+    display: flex;
+  }
+  .container > div {
+    width: 30%;
+  }
+}
+
+@media (min-width: 618px) and (max-width: 900px) {
+  .container {
+    border: solid red 1px;
+    display: flex;
+  }
+
+  .container > div {
+    width: 23%;
+  }
 }
