@@ -325,8 +325,7 @@ class Game {
 
     //can track players object to see whose turn it is
     //set turn to first pokemon
-    // turn = Math.floor(Math.random() * 2);
-    turn = 0;
+    turn = Math.floor(Math.random() * 2);
     console.log(`First player to start is ${players[turn]}`);
     this.beginAttack();
   }
@@ -346,13 +345,9 @@ class Game {
   createBattleField() {
     const containerEl = document.createElement("div");
     const player1Health = document.createElement("h2");
-    player1Health.innerText = `${this.player1.name.toUpperCase()} ${
-      this.player1.health
-    }%`;
+    player1Health.innerText = `${this.player1.name.toUpperCase()}`;
     const player2Health = document.createElement("h2");
-    player2Health.innerText = `${this.player2.name.toUpperCase()} ${
-      this.player2.health
-    }%`;
+    player2Health.innerText = `${this.player2.name.toUpperCase()}`;
 
     this.setHealthStatusBar(player1Health, player2Health);
     containerEl.appendChild(player1Health);
@@ -392,9 +387,15 @@ class Game {
     this.createDivContainerWithAttackButtons();
     //set player1 as first attacker
 
-    const attackingPokemon = document.querySelector(".poke2 > div");
-    attackingPokemon.classList.toggle("notattacking");
-
+    if (turn === 0) {
+      const attackingPokemon = document.querySelector(".poke2 > div");
+      attackingPokemon.classList.toggle("notattacking");
+      document.querySelector(".poke2 > h4").classList.toggle("notattacking");
+    } else if (turn === 1) {
+      const attackingPokemon2 = document.querySelector(".poke1 > div");
+      attackingPokemon2.classList.toggle("notattacking");
+      document.querySelector(".poke1 > h4").classList.toggle("notattacking");
+    }
     this.setEventClicksToAttackDiv();
     //will start the confrontation between pokemons
   }
@@ -493,9 +494,7 @@ class Game {
     //toggle class
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
-    document
-      .querySelector(".poke2 > div > h4")
-      .classList.toggle("notattacking");
+    document.querySelector(".poke1 > h4").classList.toggle("notattacking");
 
     console.log(`attacking now is ${players[turn]}`);
   }
@@ -535,7 +534,8 @@ class Game {
     //toggle class
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
-
+    document.querySelector(".poke2 > h4").classList.toggle("notattacking");
+    document.querySelector(".poke1 > h4").classList.toggle("notattacking");
     console.log(`attacking now is ${players[turn]}`);
   }
 
