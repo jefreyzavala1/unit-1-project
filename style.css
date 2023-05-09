@@ -28,15 +28,13 @@ h3 {
   font-size: 1.5rem;
 }
 .container {
-  /* border: 1px solid red; */
-  height: 50%;
+  height: 60%;
   display: flex;
   flex-wrap: wrap;
-  width: 40%;
+  width: 60%;
   justify-content: space-around;
   margin: 0 auto;
   border-radius: 1%;
-  background-color: white;
 }
 .unclickable {
   pointer-events: none;
@@ -47,13 +45,13 @@ h3 {
 
 .container > div {
   margin: 2% auto;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5%;
   background-color: rgb(223, 159, 159);
-  width: 25%;
+  width: 10%;
+  gap: 1px;
 }
 span {
   background-color: rgb(223, 159, 159);
@@ -100,17 +98,8 @@ span {
 .mainscreen {
   display: none;
 }
-body {
-}
-#battleContainer {
-  border: solid green;
-  /* position: relative;
-  /* border: solid black 1px; 
-  height: 80vh;
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: center; */
 
+#battleContainer {
   height: 70vh;
   width: 80vw;
   margin-left: 10%;
@@ -120,42 +109,34 @@ body {
 }
 #battleContainer .healthStatus {
   height: 15%;
-  /* border: purple 1px solid; */
   display: flex;
   justify-content: space-evenly;
 }
 
 #battleContainer .healthStatus h2 {
-  /* margin: 0;
-  height: 50%; */
   width: 45%;
-  /* border: 1px solid black; */
   text-align: center;
   height: 45%;
 }
 #battleContainer .poke1,
 #battleContainer .poke2 {
-  /* border: solid 1px red; */
   height: 40%;
   position: relative;
 }
 #battleContainer .poke1 > img {
   margin-top: 2%;
-  /* border: solid black 1px; */
   position: absolute;
   right: 30%;
   top: 14%;
   width: 40%;
   height: 70%;
   object-fit: contain;
-  /* border: solid red 1px; */
   padding-left: 25%;
   z-index: 0;
 }
 #battleContainer .poke1 > div {
   height: 30%;
   width: 30%;
-  /* border: red 4px solid; */
   display: flex;
   justify-content: space-evenly;
   margin-left: 70%;
@@ -170,33 +151,23 @@ body {
 }
 #battleContainer .poke1 {
   text-align: right;
-  /* border: solid orange 1px; */
 }
 
 #battleContainer .poke2 {
   text-align: left;
-  /* border: solid blue 1px; */
 }
 #battleContainer .poke2 > img {
   position: absolute;
-  /* margin-left: 35%; */
   top: 30%;
   width: 40%;
   height: 70%;
   left: 30%;
   object-fit: contain;
-  /* border: 1px blue solid; */
   padding-right: 27%;
   padding-top: 0%;
   padding-bottom: 0%;
   z-index: 5;
 }
-/* .healthStatus {
-  display: flex;
-
-  justify-content: center;
-  gap: 20px;
-} */
 
 .health-bar {
   background: linear-gradient(
@@ -221,46 +192,16 @@ h4 {
   cursor: pointer;
 }
 
-.left-pokemon-attack {
-  animation: attackToRight 4s ease-in-out;
-}
-
-@keyframes attackToRight {
-  0% {
-    right: 2%;
-    bottom: 100%;
-  }
-  50% {
-    bottom: 50%;
-    right: 50%;
-    transform: translate(75%, -95%);
-  }
-
-  100% {
-    bottom: 100%;
-    left: 20%;
-    transform: translate(0, 0);
+@media (max-width: 390px) {
+  .container {
+    border: solid red 5px;
+    /* display: block; */
+    display: flex;
+    flex-direction: column;
   }
 }
-.right-pokemon-attack {
-  background: blue;
-}
-/*
-.poke1 > div,
-.poke2 > div {
-  /* border: blue solid 2px; 
-  height: 25%;
-  padding-top: 5%;
-}
-.poke1 > img {
-  /* border: solid purple 2px; 
-  display: block;
-  margin-left: 63%;
-}
 
-.poke2 > img {
-  /* border: solid green 2px; 
-  text-align: right;
-  display: block;
-  margin: 0;
-} */
+@media (max-width: 390px) {
+  .container > div {
+    width: 100%;
+}
