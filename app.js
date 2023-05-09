@@ -198,21 +198,37 @@ const blastoise = new Pokemon(
 const machamp = new Pokemon(
   "machamp",
   [
-    { abilityName: "cross-chop", power: randomPower() },
+    {
+      abilityName: "cross-chop",
+      power: randomPower(),
+      img: "asset/machamp-cross-chop.gif",
+    },
     { abilityName: "dynamic-punch", power: randomPower() },
     { abilityName: "stone-edge", power: randomPower() },
   ],
-  ["asset/machamp.png", "asset/machamp-fight.png"]
+  ["asset/machamp-pokemon.gif", "asset/machamp-fight.png"]
 );
 
 const alakazam = new Pokemon(
   "alakazam",
   [
-    { abilityName: "psychic", power: randomPower() },
-    { abilityName: "future-sight", power: randomPower() },
-    { abilityName: "shadow-ball", power: randomPower() },
+    {
+      abilityName: "psychic",
+      power: randomPower(),
+      img: "asset/alakazam-psychic.gif",
+    },
+    {
+      abilityName: "future-sight",
+      power: randomPower(),
+      img: "asset/alakazam-future-sight.gif",
+    },
+    {
+      abilityName: "shadow-ball",
+      power: randomPower(),
+      img: "asset/alakazam-shadow-ball.png",
+    },
   ],
-  ["asset/alakazam.png", "asset/alakazam-fight.webp"]
+  ["asset/alakazam-pokemon.gif", "asset/alakazam-fight.webp"]
 );
 
 const squirtle = new Pokemon(
@@ -240,11 +256,15 @@ const squirtle = new Pokemon(
 const gyarados = new Pokemon(
   "gyarados",
   [
-    { abilityName: "hydro-pump", power: randomPower() },
+    {
+      abilityName: "hydro-pump",
+      power: randomPower(),
+      img: "asset/gyarados-hydro-punch.gif",
+    },
     { abilityName: "crunch", power: randomPower() },
     { abilityName: "dragon-pulse", power: randomPower() },
   ],
-  ["asset/gyarados.png", "asset/gyarados-fight.png"]
+  ["asset/gyarados-pokemon.gif", "asset/gyarados-fight.png"]
 );
 
 const lucario = new Pokemon(
@@ -253,21 +273,21 @@ const lucario = new Pokemon(
     {
       abilityName: "aura-sphere",
       power: randomPower(),
-      img: "asset/lucario-aura-sphere.png",
+      img: "asset/lucario-aura-sphere.gif",
     },
     {
       abilityName: "close-combat",
       power: randomPower(),
-      img: "asset/lucario-close-combat.webp",
+      img: "asset/lucario-close-combat.gif",
     },
     {
       abilityName: "flash-cannon",
       power: randomPower(),
-      img: "asset/lucario-flash-cannon.webp",
+      img: "asset/lucario-flash-cannon.gif",
     },
   ],
   [
-    "asset/lusscario.png",
+    "asset/lucario-pokemon.gif",
     "asset/lucario-fight.png",
     "asset/lucario-mid-fight.webp",
     "asset/lucario-lost.png",
