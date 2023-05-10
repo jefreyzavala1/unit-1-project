@@ -123,39 +123,6 @@ span {
   height: 40%;
   position: relative;
 }
-#battleContainer .poke1 > img {
-  margin-top: 2%;
-  position: absolute;
-  right: 30%;
-  top: 14%;
-  width: 40%;
-  height: 70%;
-  object-fit: contain;
-  padding-left: 25%;
-  z-index: 0;
-}
-#battleContainer .poke1 > div {
-  height: 30%;
-  width: 30%;
-  display: flex;
-  justify-content: space-evenly;
-  margin-left: 70%;
-}
-
-#battleContainer .poke2 > div {
-  height: 30%;
-  width: 30%;
-  border: blue 4px solid;
-  display: flex;
-  justify-content: space-evenly;
-}
-#battleContainer .poke1 {
-  text-align: right;
-}
-
-#battleContainer .poke2 {
-  text-align: left;
-}
 #battleContainer .poke2 > img {
   position: absolute;
   top: 30%;
@@ -167,6 +134,39 @@ span {
   padding-top: 0%;
   padding-bottom: 0%;
   z-index: 5;
+}
+#battleContainer .poke2 > div {
+  height: 30%;
+  width: 30%;
+  border: blue 4px solid;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#battleContainer .poke1 > div {
+  height: 30%;
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 70%;
+}
+#battleContainer .poke2 {
+  text-align: left;
+}
+
+#battleContainer .poke1 {
+  text-align: right;
+}
+#battleContainer .poke1 > img {
+  margin-top: 2%;
+  position: absolute;
+  right: 30%;
+  top: 14%;
+  width: 40%;
+  height: 70%;
+  object-fit: contain;
+  padding-left: 25%;
+  z-index: 0;
 }
 
 .health-bar {
@@ -194,8 +194,6 @@ h4 {
 
 @media (max-width: 390px) {
   .container {
-    border: solid red 5px;
-    /* display: block; */
     display: flex;
     flex-direction: column;
   }
@@ -209,7 +207,6 @@ h4 {
 
 @media (min-width: 391px) and (max-width: 618px) {
   .container {
-    border: solid yellow 1px;
     display: flex;
   }
   .container > div {
@@ -219,7 +216,6 @@ h4 {
 
 @media (min-width: 618px) and (max-width: 900px) {
   .container {
-    border: solid red 1px;
     display: flex;
   }
 

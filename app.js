@@ -30,8 +30,8 @@ divEl.addEventListener("click", (evt) => {
 });
 
 function init() {
-  const player1 = { player1: players[0] };
-  const player2 = { player2: players[1] };
+  const player1 = { player1: players[0] }; //pikachu
+  const player2 = { player2: players[1] }; //charizard
   console.log(player1);
   console.log(player2);
   const modal = document.createElement("div");
@@ -68,36 +68,16 @@ function init() {
         poke2 = pokemon;
       }
     }
-    console.log(poke1, poke2);
+
     const game = new Game(poke1, poke2);
+    //poke1 = {pokemon : name : pikachu}
+    //poke2 = {pokemon : name : charizard}
     //start game
-    // containerEl.remove();
-    // h2El.remove();
     game.start();
   });
 }
-
-//also need to be able to cache divs of characters to be able have
-//that state in an array of objects
-//so that when players select a pokemon on screen we can search
-//in our array and set the state of pokemon objects.
-
-// const pokemonsDivs = document.querySelectorAll(".container div");
-// const pokemonArray = [];
-
-// for (let pokemon of pokemonsDivs) {
-//   pokemonArray.push(pokemon.id);
-// }
-// console.log(pokemonArray);
-
-// //declare pokemon1 as an object
-// const pokemon1 = {};
-// //declare pokemon2 as an object
-// const pokemon2 = {};
-// //declare a turn toggle option
-let turn = 0;
-//declare turn as a global variable and set it to 0
-//declare winner - this will be 0 or 1
+//global variables
+let turn;
 let winner = null;
 
 class Pokemon {
@@ -313,28 +293,24 @@ class Game {
     this.player1 = player1;
     this.player2 = player2;
   }
+
+  //player1 : pikachu pokemon
+  //player2 : charizard pokemon
   start() {
     //set the battle field
     this.createBattleField();
     this.setPokemonsPosition();
 
-    //can track players object to see whose turn it is
-    //set turn to first pokemon
+    //decide who starts to attack
     turn = Math.floor(Math.random() * 2);
     console.log(`First player to start is ${players[turn]}`);
     this.beginAttack();
   }
-  setHealthStatusBar(player1Health, player2Health) {
-    player1Health.classList.add("health-bar");
-    player1Health.style.setProperty(
+  setHealthStatusBar(playerHealth) {
+    playerHealth.classList.add("health-bar");
+    playerHealth.style.setProperty(
       "--percentage",
       this.player1.health.toString()
-    );
-
-    player2Health.classList.add("health-bar");
-    player2Health.style.setProperty(
-      "--percentage",
-      this.player2.health.toString()
     );
   }
   createBattleField() {
@@ -344,19 +320,15 @@ class Game {
     const player2Health = document.createElement("h2");
     player2Health.innerText = `${this.player2.name.toUpperCase()}`;
 
-    this.setHealthStatusBar(player1Health, player2Health);
+    this.setHealthStatusBar(player1Health);
+    this.setHealthStatusBar(player2Health);
     containerEl.appendChild(player1Health);
     containerEl.appendChild(player2Health);
     containerEl.classList.add("healthStatus");
     document.querySelector("#battleContainer").appendChild(containerEl);
-
-    //set battle field
-
     document.querySelector(
       "#battleContainer"
     ).style.backgroundImage = `url(${battleGrounds[0]})`;
-    // document.body.style.background =
-    //   "linear-gradient(to bottom, #4e4a4a, #b5b5b5, #4e4a4a)";
   }
 
   setPokemonsPosition() {
@@ -366,15 +338,15 @@ class Game {
     poke1Img.src = this.player1.img[0];
     poke1Pos.appendChild(poke1Img);
 
-    poke2Pos.setAttribute("class", "poke1");
-    poke1Pos.setAttribute("class", "poke2");
+    poke1Pos.setAttribute("class", "poke1");
+    poke2Pos.setAttribute("class", "poke2");
 
     console.log(this.player2);
     const poke2Img = document.createElement("img");
     poke2Img.src = this.player2.img[0];
     poke2Pos.appendChild(poke2Img);
-    document.querySelector("#battleContainer").appendChild(poke2Pos);
     document.querySelector("#battleContainer").appendChild(poke1Pos);
+    document.querySelector("#battleContainer").appendChild(poke2Pos);
   }
 
   beginAttack() {
