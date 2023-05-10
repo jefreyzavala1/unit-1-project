@@ -322,8 +322,8 @@ class Game {
 
     this.setHealthStatusBar(player1Health);
     this.setHealthStatusBar(player2Health);
-    containerEl.appendChild(player1Health);
     containerEl.appendChild(player2Health);
+    containerEl.appendChild(player1Health);
     containerEl.classList.add("healthStatus");
     document.querySelector("#battleContainer").appendChild(containerEl);
     document.querySelector(
@@ -355,13 +355,13 @@ class Game {
     //set player1 as first attacker
 
     if (turn === 0) {
-      const attackingPokemon = document.querySelector(".poke2 > div");
+      const attackingPokemon = document.querySelector(".poke1 > div");
       attackingPokemon.classList.toggle("notattacking");
-      document.querySelector(".poke2 > h4").classList.toggle("notattacking");
-    } else if (turn === 1) {
-      const attackingPokemon2 = document.querySelector(".poke1 > div");
-      attackingPokemon2.classList.toggle("notattacking");
       document.querySelector(".poke1 > h4").classList.toggle("notattacking");
+    } else if (turn === 1) {
+      const attackingPokemon2 = document.querySelector(".poke2 > div");
+      attackingPokemon2.classList.toggle("notattacking");
+      document.querySelector(".poke2 > h4").classList.toggle("notattacking");
     }
     this.setEventClicksToAttackDiv();
     //will start the confrontation between pokemons
@@ -383,11 +383,11 @@ class Game {
 
     this.createAbilitiesButtonAndAppendToPokemonDiv(pokemon1El, pokemon2El);
 
-    document.querySelector(".poke2").appendChild(pokemon1El);
-    document.querySelector(".poke1").appendChild(pokemon2El);
+    document.querySelector(".poke1").appendChild(pokemon1El);
+    document.querySelector(".poke2").appendChild(pokemon2El);
 
-    document.querySelector(".poke2").appendChild(poke1H4El);
-    document.querySelector(".poke1").appendChild(poke2H4El);
+    document.querySelector(".poke1").appendChild(poke1H4El);
+    document.querySelector(".poke2").appendChild(poke2H4El);
   }
 
   createAbilitiesButtonAndAppendToPokemonDiv(pokemon1El, pokemon2El) {
@@ -407,13 +407,13 @@ class Game {
   }
 
   setEventClicksToAttackDiv() {
-    document.querySelector(".poke2 > div").addEventListener("click", (evt) => {
+    document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
       //if(evt.target.contains)
       if (evt.target.tagName === "BUTTON") {
         this.pokemon1Attack(evt);
       }
     });
-    document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
+    document.querySelector(".poke2 > div").addEventListener("click", (evt) => {
       if (evt.target.tagName === "BUTTON") {
         this.pokemon2Attack(evt);
       }
@@ -427,9 +427,9 @@ class Game {
     //get attack power;
     console.log(this.player1);
     const player1Abilities = this.player1.abilities;
-    const poke2Div = document.querySelector(".poke2 > img");
+    const poke1Div = document.querySelector(".poke1 > img");
     const targetAbility = evt.target.innerText;
-    poke2Div.setAttribute("class", "left-pokemon-attack");
+    // poke1Div.setAttribute("class", "right-pokemon-attack");
     let abilityobj = {};
     for (let ability of player1Abilities) {
       if (ability.abilityName === targetAbility) {
@@ -438,30 +438,33 @@ class Game {
     }
 
     console.log(abilityobj);
-    poke2Div.src = abilityobj.img;
+    poke1Div.src = abilityobj.img;
     this.player2.health -= abilityobj.power;
-    const player2Health = document.querySelector(".health-bar");
+    const player2Health = document.querySelector(
+      ".healthStatus h2:first-child"
+    );
+    console.log(player2Health);
     this.updateImgStatus();
-    player2Health.nextElementSibling.style.setProperty(
+    player2Health.style.setProperty(
       "--percentage",
       this.player2.health.toString()
     );
 
     console.log(`Health of ${this.player2.name} is ${this.player2.health}`);
-    if (this.player2.health < 0) {
+    if (this.player2.health <= 0) {
       console.log(`Player ${players[turn]} have won`);
       //call winning function
       this.winner(this.player1);
       return;
     }
-    //console.log(this.player2.health);
 
     //this.displayHealth()
-    turn = turn ? 0 : 1;
+    turn = 1;
     //toggle class
-    document.querySelector(".poke2 > div").classList.toggle("notattacking");
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
     document.querySelector(".poke1 > h4").classList.toggle("notattacking");
+    document.querySelector(".poke2 > div").classList.toggle("notattacking");
+    document.querySelector(".poke2 > h4").classList.toggle("notattacking");
 
     console.log(`attacking now is ${players[turn]}`);
   }
@@ -471,8 +474,8 @@ class Game {
 
     const player2Abilities = this.player2.abilities;
     const targetAbility = evt.target.innerText;
-    const poke1Div = document.querySelector(".poke1 > img");
-    poke1Div.setAttribute("class", "right-pokemon-attack");
+    const poke2Div = document.querySelector(".poke2 > img");
+    // poke1Div.setAttribute("class", "right-pokemon-attack");
     let abilityobj = {};
     for (let ability of player2Abilities) {
       if (ability.abilityName === targetAbility) {
@@ -480,10 +483,13 @@ class Game {
       }
     }
     console.log(abilityobj);
-    poke1Div.src = abilityobj.img;
+    poke2Div.src = abilityobj.img;
     this.player1.health -= abilityobj.power;
 
-    const player1Health = document.querySelector(".health-bar");
+    const player1Health = document.querySelector(
+      ".healthStatus h2:nth-child(2)"
+    );
+    console.log(player1Health);
     this.updateImgStatus();
     player1Health.style.setProperty(
       "--percentage",
@@ -497,11 +503,11 @@ class Game {
       return;
     }
 
-    turn = turn ? 0 : 1;
+    turn = 0;
     //toggle class
-    document.querySelector(".poke1 > div").classList.toggle("notattacking");
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
     document.querySelector(".poke2 > h4").classList.toggle("notattacking");
+    document.querySelector(".poke1 > div").classList.toggle("notattacking");
     document.querySelector(".poke1 > h4").classList.toggle("notattacking");
     console.log(`attacking now is ${players[turn]}`);
   }
@@ -510,18 +516,18 @@ class Game {
     //check health and update img src based on health
     //.poke1 > img , .poke2 > img
     if (this.player1.health <= 0) {
-      document.querySelector(".poke2 > img").src = this.player1.img[3];
+      document.querySelector(".poke1 > img").src = this.player1.img[3];
     } else {
       if (this.player1.health <= 50) {
-        document.querySelector(".poke2 > img").src = this.player1.img[2];
+        document.querySelector(".poke1 > img").src = this.player1.img[2];
       }
     }
 
     if (this.player2.health <= 0) {
-      document.querySelector(".poke1 > img").src = this.player2.img[3];
+      document.querySelector(".poke2 > img").src = this.player2.img[3];
     } else {
       if (this.player2.health <= 50) {
-        document.querySelector(".poke1 > img").src = this.player2.img[2];
+        document.querySelector(".poke2 > img").src = this.player2.img[2];
       }
     }
   }
