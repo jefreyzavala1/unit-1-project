@@ -53,6 +53,7 @@ function init() {
     modal.remove();
 
     document.body.style.backgroundImage = "none";
+    document.body.style.backgroundColor = "rgba(168,134,131, 255)";
 
     document.body.appendChild(battleEl);
     battleEl.setAttribute("id", "battleContainer");
@@ -546,6 +547,7 @@ class Game {
     console.log("Game to reset");
     //need to display screen play again
     //reset objects,
-    location.reload();
+    document.querySelector("#battleContainer").style.display = "none";
+    document.querySelector("#mainscreen").style.display = "none";
   }
 }
