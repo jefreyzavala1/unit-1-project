@@ -548,6 +548,6 @@ class Game {
     //need to display screen play again
     //reset objects,
     document.querySelector("#battleContainer").style.display = "none";
-    document.querySelector("#mainscreen").style.display = "none";
+    document.querySelector("#mainscreen").classList.toggle('mainscreen')
   }
 }
