@@ -1,13 +1,28 @@
-const players = {
+/*----- ----------------------------------------- Constant variables ------------------------------------*/
+const battleGrounds = ["asset/pokemon-stadium.png"];
+
+/*----- ----------------------------------------- State variables ------------------------------------*/
+let players = {
   length: 0,
 };
 
-const playingText = "Player1";
-const playerChoose = document.querySelector("#player");
-playerChoose.innerText = playingText;
+let turn;
+let winner = null;
+let playingText;
 
+/*----- ----------------------------------------- Cached Elements  ------------------------------------*/
+const playerChoose = document.querySelector("#player");
 const divEl = document.querySelector(".container");
-divEl.addEventListener("click", (evt) => {
+
+/*----- ----------------------------------------- Event Listeners ------------------------------------*/
+divEl.addEventListener("click", selecPokemons);
+
+/*----- ----------------------------------------- Functions ------------------------------------*/
+function setUp() {
+  playingText = "Player1";
+  playerChoose.innerText = playingText;
+}
+function selecPokemons(evt) {
   if (!evt.target.alt) {
     return;
   }
@@ -22,16 +37,15 @@ divEl.addEventListener("click", (evt) => {
   playerChoose.innerText = "Player 2";
   parent.classList.add("unclickable");
   if (players.length == 2) {
-    console.log("Two players ready");
-    console.log(players);
-    //set up battle between two players
     init();
   }
-});
+}
+
+setUp();
 
 function init() {
-  const player1 = { player1: players[0] }; //pikachu
-  const player2 = { player2: players[1] }; //charizard
+  const player1 = { player1: players[0] };
+  const player2 = { player2: players[1] };
   console.log(player1);
   console.log(player2);
   const modal = document.createElement("div");
@@ -58,7 +72,6 @@ function init() {
     document.body.appendChild(battleEl);
     battleEl.setAttribute("id", "battleContainer");
 
-    //find players choices in pokemons array and send pokemons to the game
     let poke1 = {};
     let poke2 = {};
     for (let pokemon of pokemonObjectArray) {
@@ -71,16 +84,13 @@ function init() {
     }
 
     const game = new Game(poke1, poke2);
-    //poke1 = {pokemon : name : pikachu}
-    //poke2 = {pokemon : name : charizard}
-    //start game
     game.start();
   });
 }
-//global variables
-let turn;
-let winner = null;
 
+/* ======================
+CREATE Pokemon
+========================= */
 class Pokemon {
   constructor(name, abilities, img) {
     this.name = name;
@@ -94,6 +104,9 @@ function randomPower() {
   return Math.floor(Math.random() * 20) + 1;
 }
 
+/* ======================
+CREATE 10 pokemon objects
+========================= */
 const pikachu = new Pokemon(
   "pikachu",
   [
@@ -115,7 +128,7 @@ const pikachu = new Pokemon(
   ],
   [
     "asset/pikachu-fighting-1.gif",
-    "asset/pikachu-fight.jpg",
+    "asset/pikachu-fight.jpg", //not used
     "asset/pikachu-mid-level.png",
     "asset/pikachu-lost.jpg",
   ]
@@ -170,7 +183,6 @@ const blastoise = new Pokemon(
   [
     "asset/blastoise-pokemon.gif",
     "asset/blastoise-fight.webp",
-    ,
     "asset/blastoise-mid-fight.png",
     "blastoise-lost.webp",
   ]
@@ -184,10 +196,23 @@ const machamp = new Pokemon(
       power: randomPower(),
       img: "asset/machamp-cross-chop.gif",
     },
-    { abilityName: "dynamic-punch", power: randomPower() },
-    { abilityName: "stone-edge", power: randomPower() },
+    {
+      abilityName: "dynamic-punch",
+      power: randomPower(),
+      img: "asset/machamp-cross-chop.gif",
+    },
+    {
+      abilityName: "stone-edge",
+      power: randomPower(),
+      img: "asset/machamp-cross-chop.gif",
+    },
   ],
-  ["asset/machamp-pokemon.gif", "asset/machamp-fight.png"]
+  [
+    "asset/machamp-pokemon.gif",
+    "asset/machamp-fight.png",
+    "asset/machamp-pokemon.gif",
+    "asset/machamp-pokemon.gif",
+  ]
 );
 
 const alakazam = new Pokemon(
@@ -209,7 +234,12 @@ const alakazam = new Pokemon(
       img: "asset/alakazam-shadow-ball.png",
     },
   ],
-  ["asset/alakazam-pokemon.gif", "asset/alakazam-fight.webp"]
+  [
+    "asset/alakazam-pokemon.gif",
+    "asset/alakazam-fight.webp",
+    "asset/alakazam-pokemon.gif",
+    "asset/alakazam-pokemon.gif",
+  ]
 );
 
 const squirtle = new Pokemon(
@@ -231,7 +261,12 @@ const squirtle = new Pokemon(
       img: "asset/squirtle-aqua-tail.gif",
     },
   ],
-  ["asset/squirtle-new.gif", "asset/squirtle-fight.jpg"]
+  [
+    "asset/squirtle-new.gif",
+    "asset/squirtle-fight.jpg",
+    "asset/squirtle-new.gif",
+    "asset/squirtle-loses.gif",
+  ]
 );
 
 const gyarados = new Pokemon(
@@ -242,10 +277,23 @@ const gyarados = new Pokemon(
       power: randomPower(),
       img: "asset/gyarados-hydro-punch.gif",
     },
-    { abilityName: "crunch", power: randomPower() },
-    { abilityName: "dragon-pulse", power: randomPower() },
+    {
+      abilityName: "crunch",
+      power: randomPower(),
+      img: "asset/gyarados-hydro-punch.gif",
+    },
+    {
+      abilityName: "dragon-pulse",
+      power: randomPower(),
+      img: "asset/gyarados-hydro-punch.gif",
+    },
   ],
-  ["asset/gyarados-pokemon.gif", "asset/gyarados-fight.png"]
+  [
+    "asset/gyarados-pokemon.gif",
+    "asset/gyarados-fight.png",
+    "asset/gyarados-fight.png",
+    "asset/gyarados-fight.png",
+  ]
 );
 
 const lucario = new Pokemon(
@@ -287,16 +335,15 @@ const pokemonObjectArray = [
   lucario,
 ];
 
-const battleGrounds = ["asset/pokemon-stadium.png"];
-
+/* ======================
+CREATE Game with two pokemon objects
+========================= */
 class Game {
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
   }
 
-  //player1 : pikachu pokemon
-  //player2 : charizard pokemon
   start() {
     //set the battle field
     this.createBattleField();
@@ -351,10 +398,7 @@ class Game {
   }
 
   beginAttack() {
-    //go to poke1 class and poke2 create a div container that holds 3 attack buttons
     this.createDivContainerWithAttackButtons();
-    //set player1 as first attacker
-
     if (turn === 0) {
       const attackingPokemon = document.querySelector(".poke1 > div");
       attackingPokemon.classList.toggle("notattacking");
@@ -365,7 +409,6 @@ class Game {
       document.querySelector(".poke2 > h4").classList.toggle("notattacking");
     }
     this.setEventClicksToAttackDiv();
-    //will start the confrontation between pokemons
   }
 
   createDivContainerWithAttackButtons() {
@@ -409,7 +452,6 @@ class Game {
 
   setEventClicksToAttackDiv() {
     document.querySelector(".poke1 > div").addEventListener("click", (evt) => {
-      //if(evt.target.contains)
       if (evt.target.tagName === "BUTTON") {
         this.pokemon1Attack(evt);
       }
@@ -422,15 +464,9 @@ class Game {
   }
 
   pokemon1Attack(evt) {
-    //console.log(this.player2.health);
-    console.log("You are here");
-    //reduce player2 health and re render its health div
-    //get attack power;
-    console.log(this.player1);
     const player1Abilities = this.player1.abilities;
     const poke1Div = document.querySelector(".poke1 > img");
     const targetAbility = evt.target.innerText;
-    // poke1Div.setAttribute("class", "right-pokemon-attack");
     let abilityobj = {};
     for (let ability of player1Abilities) {
       if (ability.abilityName === targetAbility) {
@@ -454,14 +490,11 @@ class Game {
     console.log(`Health of ${this.player2.name} is ${this.player2.health}`);
     if (this.player2.health <= 0) {
       console.log(`Player ${players[turn]} have won`);
-      //call winning function
       this.winner(this.player1);
       return;
     }
 
-    //this.displayHealth()
     turn = 1;
-    //toggle class
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
     document.querySelector(".poke1 > h4").classList.toggle("notattacking");
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
@@ -471,12 +504,9 @@ class Game {
   }
 
   pokemon2Attack(evt) {
-    //console.log(this.player1.health);
-
     const player2Abilities = this.player2.abilities;
     const targetAbility = evt.target.innerText;
     const poke2Div = document.querySelector(".poke2 > img");
-    // poke1Div.setAttribute("class", "right-pokemon-attack");
     let abilityobj = {};
     for (let ability of player2Abilities) {
       if (ability.abilityName === targetAbility) {
@@ -505,7 +535,6 @@ class Game {
     }
 
     turn = 0;
-    //toggle class
     document.querySelector(".poke2 > div").classList.toggle("notattacking");
     document.querySelector(".poke2 > h4").classList.toggle("notattacking");
     document.querySelector(".poke1 > div").classList.toggle("notattacking");
@@ -514,8 +543,6 @@ class Game {
   }
 
   updateImgStatus() {
-    //check health and update img src based on health
-    //.poke1 > img , .poke2 > img
     if (this.player1.health <= 0) {
       document.querySelector(".poke1 > img").src = this.player1.img[3];
     } else {
@@ -535,7 +562,6 @@ class Game {
 
   winner(player) {
     alert(`${player.name} has won`);
-    //open up winning modal
     const divEl = document.createElement("div");
     divEl.innerHTML = `<h3>${player.name} has won</h3> <button id="reset">Fight Again!</button>`;
     divEl.setAttribute("class", "modal");
@@ -544,10 +570,17 @@ class Game {
   }
 
   resetGame() {
-    console.log("Game to reset");
-    //need to display screen play again
-    //reset objects,
-    document.querySelector("#battleContainer").style.display = "none";
-    document.querySelector("#mainscreen").classList.toggle('mainscreen')
+    players = {
+      length: 0,
+    };
+    document.querySelector("#battleContainer").remove();
+    document.querySelector("h2.mainscreen").classList.toggle("mainscreen");
+    document.querySelector(".container").classList.toggle("mainscreen");
+    const pokemonsDiv = document.querySelectorAll(".container > div");
+    for (let div of pokemonsDiv) {
+      div.classList.remove("unclickable");
+    }
+    document.body.style.backgroundImage = `url("asset/pokemon-battle.png")`;
+    setUp();
   }
 }
