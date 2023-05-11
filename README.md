@@ -2,11 +2,11 @@
 <p>PokeClash is an interactive two-player battle game. Two players select a Pokémon and battle until one emerges victorious.</p>
 
 <h2>Screenshot(s)</h2>
-<img src ="asset/game-screenshot-1.PNG" width="25%" height="25%">
-<img src ="asset/game-screenshot-2.PNG" width="25%" height="25%">
-<img src ="asset/game-screenshot-3.PNG" width="25%" height="25%">
-<img src ="asset/game-screenshot-4.PNG" width="25%" height="25%">
-<img src ="asset/game-screenshot-5.PNG" width="25%" height="25%">
+<img src ="asset/game-screenshot-1.PNG" width="50%" height="50%">
+<img src ="asset/game-screenshot-2.PNG" width="50%" height="50%">
+<img src ="asset/game-screenshot-3.PNG" width="50%" height="50%">
+<img src ="asset/game-screenshot-4.PNG" width="50%" height="50%">
+<img src ="asset/game-screenshot-5.PNG" width="50%" height="50%">
 <h2>Technologies used</h2>
 <ul>
     <li>HTML</li>
