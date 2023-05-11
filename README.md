@@ -2,7 +2,7 @@
 <p>PokeClash is an interactive two-player battle game. Two players select a Pokémon and battle until one emerges victorious.</p>
 
 <h2>Screenshot(s)</h2>
-<img src ="asset/game-screenshot-1.PNG" height="20%">
+<img src ="asset/game-screenshot-1.PNG">
 <img src ="asset/game-screenshot-2.PNG">
 <img src ="asset/game-screenshot-3.PNG">
 <img src ="asset/game-screenshot-4.PNG">
@@ -18,4 +18,8 @@
 <h3>Link to project :<a href="https://jefreyzavala1.github.io/unit-1-project/"> PokeClash</a></h3>
 
 <h2>Next Steps</h2>
+<ul>
+    <li>Add more animations and visual effects.</li>
+    <li>Leaderboard table.</li>
+    <li>Include background music and attack sound effects.</li>
 <ul>
