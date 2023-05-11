@@ -15,7 +15,7 @@
   </ul>
 
 <h2>Getting Started</h2>
-<h3>Link to project:<a href="https://jefreyzavala1.github.io/unit-1-project/">Link</a></h3>
+<h3>Link to project :<a href="https://jefreyzavala1.github.io/unit-1-project/"> PokeClash</a></h3>
 
 <h2>Next Steps</h2>
 <ul>
