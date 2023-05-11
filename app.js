@@ -561,7 +561,7 @@ class Game {
   }
 
   winner(player) {
-    alert(`${player.name} has won`);
+    //alert(`${player.name} has won`);
     const divEl = document.createElement("div");
     divEl.innerHTML = `<h3>${player.name} has won</h3> <button id="reset">Fight Again!</button>`;
     divEl.setAttribute("class", "modal");
