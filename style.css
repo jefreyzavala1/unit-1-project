@@ -199,9 +199,7 @@ h4 {
     display: flex;
     flex-direction: column;
   }
-}
 
-@media (max-width: 390px) {
   .container > div {
     width: 50%;
   }
