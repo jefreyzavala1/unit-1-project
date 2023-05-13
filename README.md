@@ -24,3 +24,6 @@
     <li>Include background music and attack sound effects.</li>
     <li>Implement player vs cpu option.</li>
 </ul>
+
+<h2>WireFrame & PseudoCode</h2>
+<a href="https://codesandbox.io/s/wireframe-l7mhdw?file=/index.html">link</a>
