@@ -567,6 +567,12 @@ class Game {
     divEl.setAttribute("class", "modal");
     document.querySelector("#battleContainer").appendChild(divEl);
     document.querySelector("#reset").addEventListener("click", this.resetGame);
+    this.resetHealth();
+  }
+
+  resetHealth(){
+  this.player1.health = 100;
+  this.player2.health = 100;
   }
 
   resetGame() {
