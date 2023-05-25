@@ -194,34 +194,18 @@ h4 {
   cursor: pointer;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 500px) {
   .container {
+    border: solid #ffcb05 2px;
     display: flex;
     flex-direction: column;
   }
-}
-
-@media (max-width: 390px) {
-  .container > div {
-    width: 50%;
+  .container div {
+    border: solid red 2px;
+    width: 32%;
   }
-}
-
-@media (min-width: 391px) and (max-width: 618px) {
-  .container {
-    display: flex;
-  }
-  .container > div {
-    width: 30%;
-  }
-}
-
-@media (min-width: 618px) and (max-width: 900px) {
-  .container {
-    display: flex;
-  }
-
-  .container > div {
-    width: 23%;
+  body {
+    background-size: cover;
+    background-position: 20%;
   }
 }

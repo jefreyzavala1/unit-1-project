@@ -59,11 +59,11 @@ function init() {
 
   const battleEl = document.createElement("div");
   btnEl.addEventListener("click", (evt) => {
-    console.log("Let begin game");
     const h2El = document.querySelector("h2");
     const containerEl = document.querySelector(".container");
     h2El.classList.add("mainscreen");
     containerEl.classList.add("mainscreen");
+
     modal.remove();
 
     document.body.style.backgroundImage = "none";
